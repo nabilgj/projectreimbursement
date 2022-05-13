@@ -1,0 +1,21 @@
+:root {
+  --bg: #0f0f0f;
+  --grey: #2d2e2e;
+  --btn-blue: #3891a6;
+  --accent: #23ce6b;
+  --text-white: #fbfbfb;
+}
+
+.login-page {
+  width: fit-content;
+  height: fit-content;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  border-radius: 5px;
+  border: 2px solid var(--grey);
+  padding: 20px;
+}
