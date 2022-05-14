@@ -26,20 +26,19 @@ export const LoginForm: React.FC = () => {
   return (
     <div className="login">
       {/* text container */}
-      <div className="text-container">
-        <h1 className="login-header">Welcome to Reimbursements</h1>
-
+      <div className="textContainer">
+        <h1 className="loginHeader">Welcome to Reimbursements</h1>
         {/* <h2 className="login-header">Sign in to view your reimbursements</h2> */}
       </div>
 
-      <form className="login-form">
+      <form className="loginForm">
         {/* for email */}
-        <div className="input-div">
-          <h4 className="input-h4">Your Email</h4>
+        <div className="inputDiv">
+          <h4 className="inputH4">Your Email</h4>
 
           <input
             autoComplete="off"
-            className="login-input"
+            className="loginInput"
             type="text"
             name="email"
             placeholder="email"
@@ -48,12 +47,12 @@ export const LoginForm: React.FC = () => {
         </div>
 
         {/* for password */}
-        <div className="input-div">
-          <h4 className="input-h4">Your Password</h4>
+        <div className="inputDiv">
+          <h4 className="inputH4">Your Password</h4>
 
           <input
             autoComplete="off"
-            className="login-input"
+            className="loginInput"
             type="password"
             name="password"
             placeholder="password"
@@ -62,7 +61,7 @@ export const LoginForm: React.FC = () => {
         </div>
       </form>
 
-      <button className="login-button" onClick={handleLogin}>
+      <button className="loginButton" onClick={handleLogin}>
         {' '}
         Login{' '}
       </button>

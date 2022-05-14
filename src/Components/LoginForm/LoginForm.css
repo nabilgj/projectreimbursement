@@ -10,33 +10,36 @@
   width: fit-content;
   height: fit-content;
 
+  /* width: 80%;
+  height: 80%; */
+
   display: flex;
   flex-direction: column;
   justify-content: center;
 }
 
-.login-header {
-  margin-bottom: 30px;
+.loginHeader {
+  margin-bottom: 50px;
   text-align: center;
   color: var(--text-white);
-  font-size: 1rem;
+  font-size: 1.5rem;
 }
 
-.login-form {
+.loginForm {
 }
 
-.input-div:not('last') {
+.inputDiv:not('last') {
   margin-bottom: 16px;
 }
 
-.input-h4 {
+.inputH4 {
   color: var(--text-white);
   font-size: 0.6rem;
   margin-left: 4px;
   margin-bottom: 4px;
 }
 
-.login-input {
+.loginInput {
   height: 40px;
   margin-bottom: 10px;
   background-color: var(--text-white);
@@ -52,11 +55,11 @@
   color: var(--grey);
 }
 
-.login-input:focus {
+.loginInput:focus {
   outline-width: 0;
 }
 
-.login-button {
+.loginButton {
   background-color: var(--btn-blue);
   color: var(--text-white);
   width: 100%;
@@ -70,7 +73,7 @@
   text-align: center;
 }
 
-.login-button:hover {
+.loginButton:hover {
   background-color: var(--accent);
   color: var(--bg);
   transition: 0.4s;

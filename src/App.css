@@ -13,14 +13,18 @@
   font-family: 'Roboto', 'sans-serif', 'Helvetica';
 }
 
+body {
+  background-color: var(--bg);
+}
+
 .app {
+  height: 100%;
+  width: 100%;
+
+  /* width: fit-content;
+  height: fit-content; */
+
   display: flex;
   justify-content: center;
   align-items: center;
-
-  height: 100%;
-  width: 100%;
-}
-body {
-  background-color: var(--bg);
 }
