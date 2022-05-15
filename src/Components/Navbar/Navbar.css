@@ -1,0 +1,87 @@
+:root {
+  --bg: #000;
+  --grey: #2d2e2e;
+  --btn-blue: #3891a6;
+  --accent: #23ce6b;
+  --text-white: #fbfbfb;
+}
+
+.navbar {
+  background-color: var(--btn-blue);
+  height: 80px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  font-size: 1.2rem;
+  position: sticky;
+  top: 0;
+  width: 100%;
+}
+
+.profilePic {
+  width: 60px;
+  height: 60px;
+  border-radius: 100%;
+  object-fit: cover;
+  margin-left: 2rem;
+}
+
+.navMenu {
+  display: grid;
+  grid-template-columns: repeat(5, auto);
+  grid-gap: 10px;
+  list-style: none;
+  justify-content: end;
+
+  text-align: center;
+  width: 100%;
+  margin: 0 2rem;
+}
+
+.navItem {
+  display: flex;
+  align-items: center;
+  height: 100%;
+  margin-right: 8px;
+  margin-left: 8px;
+  padding: 16px;
+}
+
+.navLink {
+  color: var(--text-white);
+  font-size: 1rem;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.logout {
+  display: flex;
+  align-items: center;
+  height: 100%;
+  outline: none;
+}
+
+.logoutBtn {
+  background-color: var(--accent);
+  color: var(--text-white);
+  border: 2px solid var(--text-white);
+  border-radius: 10px;
+  font-weight: bold;
+  font-size: 1rem;
+  width: 100px;
+  height: 40px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  cursor: pointer;
+  outline: none;
+}
+
+.logoutBtn:hover {
+  transform: scale(0.95);
+  transition: 0.5s;
+  background-color: transparent;
+  border: 1px solid var(--text-white);
+}

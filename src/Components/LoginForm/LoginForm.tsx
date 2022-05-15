@@ -1,10 +1,16 @@
 import React, { useState } from 'react';
 import './LoginForm.css';
 
+import { useDispatch } from 'react-redux';
+import { toggleError, loginUser } from '../../slices/UserSlice';
+import { AppDispatch } from '../../store';
+
 // will go inside
 export const LoginForm: React.FC = () => {
   const [email, setEmail] = useState<string>('');
   const [password, setPassword] = useState<string>('');
+
+  const dispatch: AppDispatch = useDispatch();
 
   // input change handler
   const handleInput = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -17,10 +23,12 @@ export const LoginForm: React.FC = () => {
 
   // form submit handler
   const handleLogin = (event: React.MouseEvent<HTMLButtonElement>) => {
-    console.log('login user', {
-      email,
-      password,
-    });
+    let credentials = {
+      emailOrUsername: email,
+      password: password,
+    };
+
+    dispatch(loginUser(credentials));
   };
 
   return (
