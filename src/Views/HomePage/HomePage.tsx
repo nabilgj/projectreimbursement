@@ -34,14 +34,11 @@ export const HomePage: React.FC = () => {
   };
 
   useEffect(() => {
-    console.log('coming from HomePage line 36 ', userInfo);
-
     if (!userInfo.user) {
       navigator('/login');
     }
-
-    dispatch(getAllResolved());
-  }, [userInfo, reimburseInfo]);
+    // dispatch(getAllResolved());
+  }, [userInfo]);
 
   return (
     <>

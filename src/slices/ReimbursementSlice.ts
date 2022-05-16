@@ -26,32 +26,30 @@ const initialReimbursementState: ReimbursementSliceState = {
 // ================= asyn thunks ========================
 type reimb = {
   amount: number;
-  submitted_date: string;
+  // submitted_date: string;
   description: string;
-  reimbursement_author?: number;
-  reimbursement_status_id: number;
+  // reimbursement_author?: number;
+  // reimbursement_status_id: number;
   reimbursementType: number;
 };
 
 // being called from submit Button inside ReimbursementForm
 export const submitReimbursement = createAsyncThunk(
   'reimburse/submit',
-  async (credentials: reimb, thunkAPI) => {
+  async (rDetails: reimb, thunkAPI) => {
     try {
+      axios.defaults.withCredentials = true;
       const res = await axios.post(
         'http://localhost:8000/reimbursements/createRequest',
-        credentials
+        rDetails
       );
-      console.log('coming from lginUser async api call line 41 ', res.data);
+      console.log('coming from lginUser async api call line 45 ', res.data);
 
-      // return {
-      //   userId: res.data.user_id,
-      //   username: res.data.username,
-      //   email: res.data.email,
-      //   firstName: res.data.firstName,
-      //   lastName: res.data.lastName,
-      //   role: res.data.role,
-      // };
+      return {
+        amount: res.data.amount,
+        description: res.data.description,
+        reimbursementType: res.data.reimbursementType,
+      };
     } catch (e) {
       return thunkAPI.rejectWithValue('something went wrong');
     }
@@ -63,22 +61,16 @@ export const getAllResolved = createAsyncThunk(
   'reimburse/getAll',
   async (thunkAPI) => {
     try {
+      axios.defaults.withCredentials = true;
       const res = await axios.get(
         'http://localhost:8000/reimbursements/getAllResolvedByUser'
       );
+
       console.log(
         'coming from getAllResolved async api call line 69 ',
         res.data
       );
-
-      // return {
-      //   userId: res.data.user_id,
-      //   username: res.data.username,
-      //   email: res.data.email,
-      //   firstName: res.data.firstName,
-      //   lastName: res.data.lastName,
-      //   role: res.data.role,
-      // };
+      return res.data;
     } catch (e) {
       console.log(e);
     }

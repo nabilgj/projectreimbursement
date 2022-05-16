@@ -18,15 +18,13 @@ export const ReimbursementForm: React.FC<any> = (spinner: any) => {
 
   const userInfo = useSelector((state: RootState) => state.user);
   const reimburseInfo = useSelector((state: RootState) => state.reimbursement);
-  console.log('coming from ReimbursementForm line 20 ', userInfo);
+  console.log('coming from ReimbursementForm line 20 ', userInfo.user?.role);
 
   const dispatch: AppDispatch = useDispatch();
 
   useEffect(() => {
-    console.log('coming from ReimbursementForm line 26 ', reimburseInfo);
-
-    dispatch(getAllResolved());
-  }, [reimburseInfo]);
+    // dispatch(getAllResolved());
+  }, []);
 
   // input change handler
   const handleInput = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -51,13 +49,12 @@ export const ReimbursementForm: React.FC<any> = (spinner: any) => {
 
     let credentials = {
       amount: parseInt(amount),
-      submitted_date: today.toLocaleString(),
+      // submitted_date: today.toLocaleString(),
       description: description,
-      reimbursement_author: userInfo.user?.userId,
-      reimbursement_status_id: 1,
+      // reimbursement_author: userInfo.user?.userId,
+      // reimbursement_status_id: 1,
       reimbursementType: parseInt(rType),
     };
-    console.log('coming from handleSubmitReimbursement line 37 ', credentials);
 
     dispatch(submitReimbursement(credentials));
   };
