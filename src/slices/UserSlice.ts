@@ -1,6 +1,7 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 
 import { IUser } from '../interfaces/IUser';
+import { IReimbursement } from '../interfaces/IReimbursement';
 
 import axios from 'axios';
 
@@ -11,6 +12,8 @@ interface UserSliceState {
   loading: boolean;
   error: boolean;
   user?: IUser;
+  reimbursement?: IReimbursement;
+  currentProfile?: IUser;
 }
 
 // initial state
@@ -35,7 +38,7 @@ export const loginUser = createAsyncThunk(
         'http://localhost:8000/users/login',
         credentials
       );
-      console.log('coming from lginUser async api call line 38 ', res);
+      console.log('coming from lginUser async api call line 41 ', res.data);
 
       return {
         userId: res.data.user_id,
@@ -50,6 +53,32 @@ export const loginUser = createAsyncThunk(
     }
   }
 );
+
+// being called from ProfilePage
+export const getUserDetailsForManager = createAsyncThunk(
+  'users/get',
+  async (id: number | string, thunkAPI) => {
+    try {
+      const res = await axios.get(
+        `http://localhost:8000/reimbursements/getAllRequestsByEmployee/${id}`
+      );
+
+      console.log('coming from line 66 ', res);
+
+      return {
+        userId: res.data.user_id,
+        username: res.data.username,
+        email: res.data.email,
+        firstName: res.data.firstName,
+        lastName: res.data.lastName,
+        role: res.data.role,
+      };
+    } catch (e) {
+      return thunkAPI.rejectWithValue('something went wrong');
+    }
+  }
+);
+
 // ================= reducer actions ========================
 // create slice and will be exported as default
 export const UserSlice = createSlice({
@@ -77,6 +106,15 @@ export const UserSlice = createSlice({
     builder.addCase(loginUser.rejected, (state, action) => {
       state.error = true;
       state.loading = false;
+    });
+
+    builder.addCase(getUserDetailsForManager.pending, (state, action) => {
+      state.loading = true;
+    });
+
+    builder.addCase(getUserDetailsForManager.fulfilled, (state, action) => {
+      state.loading = false;
+      state.currentProfile = action.payload;
     });
   },
 });

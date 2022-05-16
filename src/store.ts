@@ -1,6 +1,8 @@
 import { configureStore } from '@reduxjs/toolkit';
 
 import userReducer from './slices/UserSlice';
+import managerReducer from './slices/ManagerSlice';
+import reimbursementReducer from './slices/ReimbursementSlice';
 
 // we wud import our reducers from the slices
 
@@ -9,6 +11,8 @@ export const store = configureStore({
   reducer: {
     // diff reducer slices for our state
     user: userReducer,
+    manager: managerReducer,
+    reimbursement: reimbursementReducer,
   },
 });
 

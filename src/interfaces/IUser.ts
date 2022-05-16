@@ -2,6 +2,7 @@ import { IReimbursement } from './IReimbursement';
 
 export interface IUser {
   userId: number;
+  username: string;
   firstName: string;
   lastName: string;
   email: string;

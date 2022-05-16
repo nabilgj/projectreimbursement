@@ -1,12 +1,13 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './LoginForm.css';
 
 import { useDispatch } from 'react-redux';
 import { toggleError, loginUser } from '../../slices/UserSlice';
 import { AppDispatch } from '../../store';
+import { Spinner } from '../Spinner/Spinner';
 
-// will go inside
-export const LoginForm: React.FC = () => {
+// will go inside LoginPage
+export const LoginForm: React.FC<any> = (spinner: any) => {
   const [email, setEmail] = useState<string>('');
   const [password, setPassword] = useState<string>('');
 
@@ -69,10 +70,13 @@ export const LoginForm: React.FC = () => {
         </div>
       </form>
 
-      <button className="loginButton" onClick={handleLogin}>
-        {' '}
-        Login{' '}
-      </button>
+      {spinner ? (
+        <button className="loginButton" onClick={handleLogin}>
+          login
+        </button>
+      ) : (
+        <Spinner />
+      )}
     </div>
   );
 };

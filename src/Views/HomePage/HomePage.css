@@ -1,0 +1,52 @@
+:root {
+  --bg: #0f0f0f;
+  --grey: #2d2e2e;
+  --btn-blue: #3891a6;
+  --accent: #23ce6b;
+  --text-white: #fbfbfb;
+}
+
+.userInfo {
+  color: var(--text-white);
+  margin-top: 2rem;
+  z-index: 1;
+
+  display: flex;
+  justify-content: center;
+}
+
+.userSection {
+  display: flex;
+  justify-content: center;
+
+  margin: 0 20px;
+  margin: 20px;
+}
+
+.reimbursementSection {
+  color: var(--text-white);
+  margin: 0 20px;
+  border: 2px solid var(--grey);
+  width: 80%;
+}
+
+.managerButton {
+  background-color: var(--btn-blue);
+  color: var(--text-white);
+  width: 30%;
+  height: 40px;
+  border: 2px solid var(--bg);
+  border-radius: 10px;
+  margin-top: 20px;
+  padding: auto;
+  font-size: 1rem;
+  font-weight: bold;
+  text-align: center;
+  cursor: pointer;
+}
+
+.managerButton:hover {
+  /* transform: scale(0.95); */
+  transition: 0.5s;
+  background-color: var(--accent);
+}

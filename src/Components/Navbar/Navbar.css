@@ -6,8 +6,8 @@
   --text-white: #fbfbfb;
 }
 
-.navbar {
-  background-color: var(--btn-blue);
+.mNavBar,
+.eNavBar {
   height: 80px;
 
   display: flex;
@@ -19,13 +19,19 @@
   top: 0;
   width: 100%;
 }
+.mNavBar {
+  background-color: var(--btn-blue);
+}
+.eNavBar {
+  background-color: var(--accent);
+}
 
 .profilePic {
-  width: 60px;
-  height: 60px;
   border-radius: 100%;
   object-fit: cover;
   margin-left: 2rem;
+  text-align: center;
+  color: var(--text-white);
 }
 
 .navMenu {
