@@ -24,6 +24,7 @@
 }
 .eNavBar {
   background-color: var(--accent);
+  background: transparent;
 }
 
 .profilePic {

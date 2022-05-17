@@ -43,7 +43,7 @@
   flex-wrap: wrap;
   margin: 0 10px;
 
-  border: 2px solid var(--grey);
+  border: 2px solid var(--btn-blue);
   border-radius: 10px;
   background: transparent;
   color: var(--text-white);
