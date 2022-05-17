@@ -3,8 +3,19 @@ import './HomeViewDup.css';
 
 import { Link } from 'react-router-dom';
 
+import { useDispatch } from 'react-redux';
+import { AppDispatch } from '../../store';
+import { getAllPendingByUser } from '../../slices/ReimbursementSlice';
+
 // go inside HomePage
 export const HomeViewDup: React.FC<any> = () => {
+  const dispatch: AppDispatch = useDispatch();
+
+  // form submit handler
+  const handleGetAllPending = (event: React.MouseEvent<HTMLButtonElement>) => {
+    dispatch(getAllPendingByUser());
+  };
+
   return (
     <div className="some-page-wrapper">
       {/* 1st row */}
@@ -19,7 +30,7 @@ export const HomeViewDup: React.FC<any> = () => {
           </h3>
           <p className="textPara"> Submit your reimbursement request today!</p>
 
-          <Link to="/reimbursement" style={{ textDecoration: 'none' }}>
+          <Link to="/submitreimbursement" style={{ textDecoration: 'none' }}>
             <button className="reimburseButton">Submit Request</button>
           </Link>
         </div>
@@ -29,7 +40,7 @@ export const HomeViewDup: React.FC<any> = () => {
 
           </div> */}
           <h3 className="textHeader">Want to make changes to your account?</h3>
-          <p className="textPara"> Check and update your account</p>
+          <p className="textPara"> Click here to see your account</p>
 
           <Link to="/reimbursement" style={{ textDecoration: 'none' }}>
             <button className="reimburseButton">View Account</button>
@@ -47,7 +58,9 @@ export const HomeViewDup: React.FC<any> = () => {
           <p className="textPara"> View your pending requests</p>
 
           <Link to="/reimbursement" style={{ textDecoration: 'none' }}>
-            <button className="reimburseButton">Pending Requests</button>
+            <button className="reimburseButton" onClick={handleGetAllPending}>
+              Pending Requests
+            </button>
           </Link>
         </div>
         <div className="reimburseColumn">

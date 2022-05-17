@@ -15,7 +15,7 @@ function App() {
         <Route path="*" element={<Navigate to="/login" replace />} />
         <Route path="/login" element={<LoginPage />} />
         <Route path="/home" element={<HomePage />} />
-        <Route path="/reimbursement" element={<ReimbursementForm />} />
+        <Route path="/submitreimbursement" element={<ReimbursementForm />} />
 
         <Route
           path="/reimbursements/getAllRequestsByEmployee/:id"

@@ -57,6 +57,35 @@ export const submitReimbursement = createAsyncThunk(
 );
 
 // being called from submit Button inside ReimbursementForm
+export const getAllPendingByUser = createAsyncThunk(
+  'pending/getAll',
+  async (thunkAPI) => {
+    try {
+      axios.defaults.withCredentials = true;
+      const res = await axios.get(
+        'http://localhost:8000/reimbursements/getAllPendingByUser'
+      );
+
+      console.log(
+        'coming from getAllPendingByUser async api call line 70',
+        res.data
+      );
+
+      return {
+        userId: res.data.user_id,
+        username: res.data.username,
+        email: res.data.email,
+        firstName: res.data.firstName,
+        lastName: res.data.lastName,
+        role: res.data.role,
+      };
+    } catch (e) {
+      console.log(e);
+    }
+  }
+);
+
+// being called from submit Button inside ReimbursementForm
 export const getAllResolved = createAsyncThunk(
   'reimburse/getAll',
   async (thunkAPI) => {
@@ -67,7 +96,7 @@ export const getAllResolved = createAsyncThunk(
       );
 
       console.log(
-        'coming from getAllResolved async api call line 69 ',
+        'coming from getAllResolved async api call line 97 ',
         res.data
       );
       return res.data;

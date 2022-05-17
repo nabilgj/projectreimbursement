@@ -1,15 +1,20 @@
 import { IUser } from './IUser';
 
 export interface IReimbursement {
+  id?: number;
   amount: number;
-  submitted_date?: string;
+  submittedDate?: string;
   description: string;
-  reimbursement_author?: number;
-  reimbursement_status_id?: number;
-  reimbursementType: number;
 
+  reimbursementAuthorId?: number;
   reimbursementAuthor?: IUser;
 
+  reimbursement_status_id?: number;
+  reimbursementStatus?: string;
+
+  reimbursementTypeId?: number;
+  reimbursementType?: string;
+
   resolvedDate?: Date;
-  reimbursementResolver?: number;
+  reimbursementResolverId?: number;
 }
