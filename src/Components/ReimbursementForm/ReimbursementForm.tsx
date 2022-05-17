@@ -9,6 +9,7 @@ import {
 import { AppDispatch, RootState } from '../../store';
 
 import { Spinner } from '../Spinner/Spinner';
+import { useNavigate } from 'react-router-dom';
 
 // will go inside HomePage
 export const ReimbursementForm: React.FC<any> = (spinner: any) => {
@@ -18,6 +19,8 @@ export const ReimbursementForm: React.FC<any> = (spinner: any) => {
 
   const userInfo = useSelector((state: RootState) => state.user);
   const reimburseInfo = useSelector((state: RootState) => state.reimbursement);
+  const navigator = useNavigate();
+
   console.log('coming from ReimbursementForm line 20 ', userInfo.user?.role);
 
   const dispatch: AppDispatch = useDispatch();
@@ -41,22 +44,14 @@ export const ReimbursementForm: React.FC<any> = (spinner: any) => {
   const handleSubmitReimbursement = (
     event: React.MouseEvent<HTMLButtonElement>
   ) => {
-    let today = new Date().toJSON().slice(0, 10).replace(/-/g, '/');
-    // let dd = today.getDate();
-    // let mm = today.getMonth();
-    // let yyyy = today.getFullYear();
-    // today = mm + '/' + dd + '/' + yyyy;
-
     let credentials = {
       amount: parseInt(amount),
-      // submitted_date: today.toLocaleString(),
       description: description,
-      // reimbursement_author: userInfo.user?.userId,
-      // reimbursement_status_id: 1,
       reimbursementType: parseInt(rType),
     };
 
     dispatch(submitReimbursement(credentials));
+    navigator('/home');
   };
 
   return (

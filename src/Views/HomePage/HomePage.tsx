@@ -11,6 +11,7 @@ import { useNavigate } from 'react-router-dom';
 
 import { Navbar } from '../../Components/Navbar/Navbar';
 import { ReimbursementForm } from '../../Components/ReimbursementForm/ReimbursementForm';
+import { HomeView } from '../../Components/HomeView/HomeView';
 
 // go inside App for Route
 export const HomePage: React.FC = () => {
@@ -47,7 +48,10 @@ export const HomePage: React.FC = () => {
 
       {/* {checkForContent} */}
 
-      <div className="userSection">
+      {/* home page - comes from outside component */}
+      <HomeView />
+
+      {/* <div className="userSection">
         <div className="reimbursementSection">
           <h2 style={{ textAlign: 'center', marginTop: '20px' }}>
             Create Reimbursement
@@ -59,7 +63,7 @@ export const HomePage: React.FC = () => {
         <div className="reimbursementSection">
           <h2>All Reimbursement Submission</h2>
         </div>
-      </div>
+      </div> */}
     </>
   );
 };

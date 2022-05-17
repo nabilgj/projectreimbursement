@@ -1,0 +1,44 @@
+.some-page-wrapper {
+  margin: 16px;
+  /* background-color: red; */
+}
+
+.row {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  margin: 20px 0;
+  height: 200px;
+}
+
+.row2 {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  margin: 20px 0;
+  height: 200px;
+}
+
+.textHeader {
+  text-align: center;
+}
+
+.column {
+  display: flex;
+  flex-direction: column;
+  flex-basis: 100%;
+  flex: 1;
+  /* flex-wrap: wrap; */
+  margin: 0 10px;
+  /* height: fit-content; */
+}
+
+.blue-column {
+  height: 100%;
+  background-color: white;
+}
+
+.green-column {
+  height: 100%;
+  background: white;
+}

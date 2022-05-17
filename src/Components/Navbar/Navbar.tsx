@@ -1,21 +1,31 @@
 import React, { useEffect } from 'react';
 import './Navbar.css';
 
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import profilepic from '../../profile.jpg';
 
-import { useSelector } from 'react-redux';
-import { RootState } from '../../store';
+import { useSelector, useDispatch } from 'react-redux';
+import { RootState, AppDispatch } from '../../store';
+import { logoutUser } from '../../slices/UserSlice';
 
 // inside ReimbursementPage
 export const Navbar: React.FC = () => {
-  const handleLogout = () => {};
+  const dispatch: AppDispatch = useDispatch();
+  const navigator = useNavigate();
 
   const user = useSelector((state: RootState) => state.user.user);
 
-  // useEffect(() => {
-  //   console.log('coming from Navbar useEffect line 17 ', user);
-  // }, [user]);
+  const handleLogout = () => {
+    dispatch(logoutUser());
+    // navigator('/login');
+  };
+
+  useEffect(() => {
+    if (!user) {
+      navigator('/login');
+    }
+    // dispatch(getAllResolved());
+  }, [user]);
 
   return (
     <nav className={user?.role === 'FinanceManager' ? 'mNavBar' : 'eNavBar'}>
@@ -53,11 +63,13 @@ export const Navbar: React.FC = () => {
         </li>
 
         <li className="logout">
-          <Link to={'/login'} className="navLink">
-            <button className="logoutBtn" onClick={handleLogout}>
-              Logout
-            </button>
-          </Link>
+          {/* <Link to={'/login'} className="navLink">
+
+          </Link> */}
+
+          <button className="logoutBtn" onClick={handleLogout}>
+            Logout
+          </button>
         </li>
       </ul>
     </nav>

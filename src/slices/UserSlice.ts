@@ -55,6 +55,17 @@ export const loginUser = createAsyncThunk(
   }
 );
 
+// being called from Logout Button inside Navbar
+export const logoutUser = createAsyncThunk('user/logout', async (thunkAPI) => {
+  try {
+    axios.defaults.withCredentials = true;
+    const res = await axios.delete('http://localhost:8000/users/logout');
+    console.log('coming from logoutUser async api call line 67');
+  } catch (e) {
+    console.log('something went wrong');
+  }
+});
+
 // being called from ProfilePage
 export const getUserDetailsForManager = createAsyncThunk(
   'users/get',
@@ -116,6 +127,15 @@ export const UserSlice = createSlice({
     builder.addCase(getUserDetailsForManager.fulfilled, (state, action) => {
       state.loading = false;
       state.currentProfile = action.payload;
+    });
+
+    builder.addCase(logoutUser.pending, (state, action) => {
+      state.loading = true;
+    });
+
+    builder.addCase(logoutUser.fulfilled, (state, action) => {
+      state.loading = false;
+      state.user = undefined;
     });
   },
 });
