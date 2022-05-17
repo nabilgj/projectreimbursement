@@ -1,7 +1,7 @@
 import React from 'react';
 import './HomeViewDup.css';
 
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 import { useDispatch } from 'react-redux';
 import { AppDispatch } from '../../store';
@@ -10,10 +10,12 @@ import { getAllPendingByUser } from '../../slices/ReimbursementSlice';
 // go inside HomePage
 export const HomeViewDup: React.FC<any> = () => {
   const dispatch: AppDispatch = useDispatch();
+  const navigator = useNavigate();
 
   // form submit handler
   const handleGetAllPending = (event: React.MouseEvent<HTMLButtonElement>) => {
     dispatch(getAllPendingByUser());
+    navigator('/pendingrequest');
   };
 
   return (
@@ -57,7 +59,7 @@ export const HomeViewDup: React.FC<any> = () => {
           <h3 className="textHeader">Have you submitted reimbursement?</h3>
           <p className="textPara"> View your pending requests</p>
 
-          <Link to="/reimbursement" style={{ textDecoration: 'none' }}>
+          <Link to="/pendingrequest" style={{ textDecoration: 'none' }}>
             <button className="reimburseButton" onClick={handleGetAllPending}>
               Pending Requests
             </button>

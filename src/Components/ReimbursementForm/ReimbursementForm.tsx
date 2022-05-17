@@ -29,7 +29,11 @@ export const ReimbursementForm: React.FC<any> = (spinner: any) => {
 
   useEffect(() => {
     // dispatch(getAllResolved());
-  }, []);
+    console.log(
+      'coming from form line joseph is a manager ',
+      reimburseInfo.allPending
+    );
+  }, [reimburseInfo]);
 
   // input change handler
   const handleInput = (event: React.ChangeEvent<HTMLInputElement>) => {

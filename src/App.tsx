@@ -3,8 +3,10 @@ import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 
 import { LoginPage } from './Views/LoginPage/LoginPage';
 import { HomePage } from './Views/HomePage/HomePage';
-import { ReimbursementForm } from './Components/ReimbursementForm/ReimbursementForm';
 import { ProfilePage } from './Views/ProfilePage/ProfilePage';
+
+import { ReimbursementForm } from './Components/ReimbursementForm/ReimbursementForm';
+import { PendingReqPage } from './Components/PendingReqPage/PendingReqPage';
 
 import './App.css';
 
@@ -16,6 +18,7 @@ function App() {
         <Route path="/login" element={<LoginPage />} />
         <Route path="/home" element={<HomePage />} />
         <Route path="/submitreimbursement" element={<ReimbursementForm />} />
+        <Route path="/pendingrequest" element={<PendingReqPage />} />
 
         <Route
           path="/reimbursements/getAllRequestsByEmployee/:id"

@@ -14,6 +14,7 @@ interface ReimbursementSliceState {
   user?: IUser;
   reimbursement?: IReimbursement;
   currentProfile?: IUser;
+  allPending?: IReimbursement[];
 }
 
 // initial state
@@ -56,13 +57,15 @@ export const submitReimbursement = createAsyncThunk(
   }
 );
 
+let res: any;
+
 // being called from submit Button inside ReimbursementForm
 export const getAllPendingByUser = createAsyncThunk(
   'pending/getAll',
   async (thunkAPI) => {
     try {
       axios.defaults.withCredentials = true;
-      const res = await axios.get(
+      res = await axios.get(
         'http://localhost:8000/reimbursements/getAllPendingByUser'
       );
 
@@ -72,7 +75,7 @@ export const getAllPendingByUser = createAsyncThunk(
       );
 
       return {
-        userId: res.data.user_id,
+        reqId: res.data.user_id,
         username: res.data.username,
         email: res.data.email,
         firstName: res.data.firstName,
@@ -131,6 +134,20 @@ export const ReimbursementSlice = createSlice({
       state.loading = false;
     });
     builder.addCase(submitReimbursement.rejected, (state, action) => {
+      state.error = true;
+      state.loading = false;
+    });
+    // this is where we create our user logic
+    builder.addCase(getAllPendingByUser.pending, (state, action) => {
+      state.loading = true;
+    });
+    builder.addCase(getAllPendingByUser.fulfilled, (state, action) => {
+      // payload is the return from our asyn api call
+      state.allPending = res.data;
+      state.error = false;
+      state.loading = false;
+    });
+    builder.addCase(getAllPendingByUser.rejected, (state, action) => {
       state.error = true;
       state.loading = false;
     });
