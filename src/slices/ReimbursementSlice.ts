@@ -15,6 +15,7 @@ interface ReimbursementSliceState {
   reimbursement?: IReimbursement;
   currentProfile?: IUser;
   allPending?: IReimbursement[];
+  allResolved?: IReimbursement[];
 }
 
 // initial state
@@ -70,7 +71,7 @@ export const getAllPendingByUser = createAsyncThunk(
       );
 
       console.log(
-        'coming from getAllPendingByUser async api call line 70',
+        'coming from getAllPendingByUser async api call line 73',
         res.data
       );
 
@@ -89,20 +90,28 @@ export const getAllPendingByUser = createAsyncThunk(
 );
 
 // being called from submit Button inside ReimbursementForm
-export const getAllResolved = createAsyncThunk(
-  'reimburse/getAll',
+export const getAllResolvedByUser = createAsyncThunk(
+  'resolved/getAll',
   async (thunkAPI) => {
     try {
       axios.defaults.withCredentials = true;
-      const res = await axios.get(
+      res = await axios.get(
         'http://localhost:8000/reimbursements/getAllResolvedByUser'
       );
 
       console.log(
-        'coming from getAllResolved async api call line 97 ',
+        'coming from getAllResolvedByUser async api call line 102',
         res.data
       );
-      return res.data;
+
+      // return {
+      //   reqId: res.data.user_id,
+      //   username: res.data.username,
+      //   email: res.data.email,
+      //   firstName: res.data.firstName,
+      //   lastName: res.data.lastName,
+      //   role: res.data.role,
+      // };
     } catch (e) {
       console.log(e);
     }
@@ -152,12 +161,17 @@ export const ReimbursementSlice = createSlice({
       state.loading = false;
     });
 
-    builder.addCase(getAllResolved.pending, (state, action) => {
+    builder.addCase(getAllResolvedByUser.pending, (state, action) => {
       state.loading = true;
     });
-    builder.addCase(getAllResolved.fulfilled, (state, action) => {
+    builder.addCase(getAllResolvedByUser.fulfilled, (state, action) => {
       // payload is the return from our asyn api call
+      state.allResolved = res.data;
       state.error = false;
+      state.loading = false;
+    });
+    builder.addCase(getAllResolvedByUser.rejected, (state, action) => {
+      state.error = true;
       state.loading = false;
     });
   },

@@ -4,10 +4,7 @@ import './ReimbursementForm.css';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 
-import {
-  getAllResolved,
-  submitReimbursement,
-} from '../../slices/ReimbursementSlice';
+import { submitReimbursement } from '../../slices/ReimbursementSlice';
 import { AppDispatch, RootState } from '../../store';
 
 import { Spinner } from '../Spinner/Spinner';

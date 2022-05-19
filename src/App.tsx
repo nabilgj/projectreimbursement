@@ -7,6 +7,7 @@ import { ProfilePage } from './Views/ProfilePage/ProfilePage';
 
 import { ReimbursementForm } from './Components/ReimbursementForm/ReimbursementForm';
 import { PendingReqPage } from './Components/PendingReqPage/PendingReqPage';
+import { ResolvedReqPage } from './Components/ResolvedReqPage/ResolvedReqPage';
 
 import './App.css';
 
@@ -19,6 +20,7 @@ function App() {
         <Route path="/home" element={<HomePage />} />
         <Route path="/submitreimbursement" element={<ReimbursementForm />} />
         <Route path="/pendingrequest" element={<PendingReqPage />} />
+        <Route path="/resolvedrequest" element={<ResolvedReqPage />} />
 
         <Route
           path="/reimbursements/getAllRequestsByEmployee/:id"

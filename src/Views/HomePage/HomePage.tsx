@@ -3,36 +3,21 @@ import './HomePage.css';
 import { IUser } from '../../interfaces/IUser';
 
 import { getAllUsers } from '../../slices/ManagerSlice';
-import { getAllResolved } from '../../slices/ReimbursementSlice';
 
 import { useSelector, useDispatch } from 'react-redux';
 import { RootState, AppDispatch } from '../../store';
 import { useNavigate } from 'react-router-dom';
 
 import { Navbar } from '../../Components/Navbar/Navbar';
-import { ReimbursementForm } from '../../Components/ReimbursementForm/ReimbursementForm';
+
 import { HomeViewDup } from '../../Components/HomeView/HomeViewDup';
 
 // go inside App for Route
 export const HomePage: React.FC = () => {
   const userInfo = useSelector((state: RootState) => state.user);
-  const managerInfo = useSelector((state: RootState) => state.manager);
-  const reimburseInfo = useSelector((state: RootState) => state.reimbursement);
   const dispatch: AppDispatch = useDispatch();
 
   const navigator = useNavigate();
-
-  // form submit handler
-  const handleAllUsers = (event: React.MouseEvent<HTMLButtonElement>) => {
-    dispatch(getAllUsers());
-  };
-
-  // form submit handler
-  const handleAllReimbursements = (
-    event: React.MouseEvent<HTMLButtonElement>
-  ) => {
-    // dispatch(getAllUsers());
-  };
 
   useEffect(() => {
     if (!userInfo.user) {

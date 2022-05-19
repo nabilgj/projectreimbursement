@@ -5,7 +5,10 @@ import { Link, useNavigate } from 'react-router-dom';
 
 import { useDispatch } from 'react-redux';
 import { AppDispatch } from '../../store';
-import { getAllPendingByUser } from '../../slices/ReimbursementSlice';
+import {
+  getAllPendingByUser,
+  getAllResolvedByUser,
+} from '../../slices/ReimbursementSlice';
 
 // go inside HomePage
 export const HomeViewDup: React.FC<any> = () => {
@@ -16,6 +19,12 @@ export const HomeViewDup: React.FC<any> = () => {
   const handleGetAllPending = (event: React.MouseEvent<HTMLButtonElement>) => {
     dispatch(getAllPendingByUser());
     navigator('/pendingrequest');
+  };
+
+  // form submit handler
+  const handleGetAllResolved = (event: React.MouseEvent<HTMLButtonElement>) => {
+    dispatch(getAllResolvedByUser());
+    // navigator('/resolvedrequest');
   };
 
   return (
@@ -73,8 +82,10 @@ export const HomeViewDup: React.FC<any> = () => {
           <h3 className="textHeader">What do you think about your requests?</h3>
           <p className="textPara"> Lets check your request status</p>
 
-          <Link to="/reimbursement" style={{ textDecoration: 'none' }}>
-            <button className="reimburseButton">See Status</button>
+          <Link to="/resolvedrequest" style={{ textDecoration: 'none' }}>
+            <button className="reimburseButton" onClick={handleGetAllResolved}>
+              See Status
+            </button>
           </Link>
         </div>
       </div>

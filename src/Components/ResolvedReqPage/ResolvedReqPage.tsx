@@ -1,20 +1,18 @@
 import React, { useEffect } from 'react';
-import './PendingReqPage.css';
-
-import { IReimbursement } from '../../interfaces/IReimbursement';
+import './ResolvedReqPage.css';
 
 import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 
 import { RootState, AppDispatch } from '../../store';
-import { getAllPendingByUser } from '../../slices/ReimbursementSlice';
+import { getAllResolvedByUser } from '../../slices/ReimbursementSlice';
 
 import { Navbar } from '../Navbar/Navbar';
 
 // go inside App for routing
-export const PendingReqPage: React.FC<any> = () => {
-  const pendingInfo = useSelector(
-    (state: RootState) => state.reimbursement.allPending
+export const ResolvedReqPage: React.FC<any> = () => {
+  const resolvedInfo = useSelector(
+    (state: RootState) => state.reimbursement.allResolved
   );
 
   const dispatch: AppDispatch = useDispatch();
@@ -31,10 +29,10 @@ export const PendingReqPage: React.FC<any> = () => {
   return (
     <div className="some-page-wrapper">
       <Navbar />
-      <h1> Your Pending Requests </h1>
+      <h1> Your Resolved Requests </h1>
       <div style={{ color: 'white' }}>
         <ul>
-          {pendingInfo?.map((info) => {
+          {resolvedInfo?.map((info) => {
             return <li key={info.id}> Description: {info.description}</li>;
           })}
         </ul>
