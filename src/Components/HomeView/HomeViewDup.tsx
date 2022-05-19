@@ -53,7 +53,7 @@ export const HomeViewDup: React.FC<any> = () => {
           <h3 className="textHeader">Want to make changes to your account?</h3>
           <p className="textPara"> Click here to see your account</p>
 
-          <Link to="/reimbursement" style={{ textDecoration: 'none' }}>
+          <Link to="/viewaccount" style={{ textDecoration: 'none' }}>
             <button className="reimburseButton">View Account</button>
           </Link>
         </div>

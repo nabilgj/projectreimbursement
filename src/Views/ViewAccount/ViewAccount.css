@@ -1,0 +1,7 @@
+.accountButtons {
+  display: flex;
+  background-color: #fff;
+  width: 100%;
+  justify-content: center;
+  align-items: space-around;
+}

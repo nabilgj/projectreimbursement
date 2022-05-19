@@ -21,29 +21,34 @@ export const ReimbursementForm: React.FC<any> = (spinner: any) => {
   const navigator = useNavigate();
 
   console.log('coming from ReimbursementForm line 20 ', userInfo.user?.role);
+  console.log(
+    'coming from reimburseInfo line 25 ',
+    reimburseInfo.reimbursement
+  );
 
   const dispatch: AppDispatch = useDispatch();
+  const [pendingInfo, setPendingInfo] = useState([]);
 
   useEffect(() => {
-    // dispatch(getAllResolved());
+    // console.log(
+    //   'coming from form line joseph is a manager ',
+    //   reimburseInfo.allPending
+    // );
     console.log(
-      'coming from form line joseph is a manager ',
-      reimburseInfo.allPending
+      'coming from form may 19, 2022, line 38 ',
+      reimburseInfo.reimbursement
     );
   }, [reimburseInfo]);
 
   // input change handler
   const handleInput = (event: React.ChangeEvent<HTMLInputElement>) => {
-    let x = '/^-?[1-9]d{0,1}(.[1-9]{1})?$/';
+    // let x = '/^-?[1-9]d{0,1}(.[1-9]{1})?$/';
 
-    if (event.target.name === 'amount' && event.target.value === x) {
+    if (event.target.name === 'amount') {
       setAmount(event.target.value);
     } else if (event.target.name === 'description') {
       setDescription(event.target.value);
     }
-    // else if (event.target.value === 'rType') {
-    //   setRType(event.target.value);
-    // }
   };
 
   const onSelectValue = (event: React.ChangeEvent<HTMLSelectElement>) => {
@@ -69,6 +74,7 @@ export const ReimbursementForm: React.FC<any> = (spinner: any) => {
     };
 
     dispatch(submitReimbursement(credentials));
+
     navigator('/home');
   };
 

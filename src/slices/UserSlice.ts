@@ -45,6 +45,7 @@ export const loginUser = createAsyncThunk(
         userId: res.data.user_id,
         username: res.data.username,
         email: res.data.email,
+        password: res.data.password,
         firstName: res.data.firstName,
         lastName: res.data.lastName,
         role: res.data.role,
@@ -55,11 +56,61 @@ export const loginUser = createAsyncThunk(
   }
 );
 
+type userEdit = {
+  username: string;
+  firstName: string;
+  lastName: string;
+  email: string;
+  password: string;
+  role_id: number;
+  // userId: number;
+};
+
+// being called from Login Button inside LoginForm
+export const editUser = createAsyncThunk(
+  'user/edituser',
+  async (credentials: userEdit, thunkAPI) => {
+    try {
+      axios.defaults.withCredentials = true;
+      const res = await axios.post(
+        'http://localhost:8000/users/update',
+        credentials
+      );
+      console.log('coming from lginUser async api call line 69 ', res.data);
+
+      return {
+        userId: res.data.user_id,
+        username: res.data.username,
+        email: res.data.email,
+        firstName: res.data.firstName,
+        lastName: res.data.lastName,
+        role: res.data.role,
+      };
+    } catch (e) {
+      return thunkAPI.rejectWithValue('something went wrong');
+    }
+  }
+);
+
+// being called from Login Button inside LoginForm
+// export const userInfo = createAsyncThunk('user/userInfo', async (thunkAPI) => {
+//   try {
+//     axios.defaults.withCredentials = true;
+//     const res = await axios.get('http://localhost:8000/users/myInfo');
+//     console.log('coming from lginUser async api call line 68 ', res.data);
+
+//   } catch (e) {
+//     console.log(e);
+//   }
+// });
+
+let response: any;
+
 // being called from Logout Button inside Navbar
 export const logoutUser = createAsyncThunk('user/logout', async (thunkAPI) => {
   try {
     axios.defaults.withCredentials = true;
-    const res = await axios.delete('http://localhost:8000/users/logout');
+    response = await axios.delete('http://localhost:8000/users/logout');
     console.log('coming from logoutUser async api call line 67');
   } catch (e) {
     console.log('something went wrong');
@@ -116,6 +167,20 @@ export const UserSlice = createSlice({
       state.loading = false;
     });
     builder.addCase(loginUser.rejected, (state, action) => {
+      state.error = true;
+      state.loading = false;
+    });
+
+    builder.addCase(editUser.pending, (state, action) => {
+      state.loading = true;
+    });
+    builder.addCase(editUser.fulfilled, (state, action) => {
+      // payload is the return from our asyn api call
+      state.user = action.payload;
+      state.error = false;
+      state.loading = false;
+    });
+    builder.addCase(editUser.rejected, (state, action) => {
       state.error = true;
       state.loading = false;
     });

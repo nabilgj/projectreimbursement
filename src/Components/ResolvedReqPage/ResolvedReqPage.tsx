@@ -35,7 +35,11 @@ export const ResolvedReqPage: React.FC<any> = () => {
         </div>
         {resolvedInfo?.map((info) => {
           return (
-            <div className="resolvedColumn" style={{ color: 'white' }}>
+            <div
+              key={info.id}
+              className="resolvedColumn"
+              style={{ color: 'white' }}
+            >
               <h3>{info.reimbursementStatus}</h3>
               <p>Amount: ${info.amount}</p>
               <p>Description: {info.description}</p>

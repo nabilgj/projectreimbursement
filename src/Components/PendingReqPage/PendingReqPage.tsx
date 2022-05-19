@@ -16,28 +16,35 @@ export const PendingReqPage: React.FC<any> = () => {
   const pendingInfo = useSelector(
     (state: RootState) => state.reimbursement.allPending
   );
+
+  // let reversePending = pendingInfo?.reverse();
   const userInfo = useSelector((state: RootState) => state.user.user);
 
   const dispatch: AppDispatch = useDispatch();
 
   useEffect(() => {
     // dispatch(getAllPendingByUser());
-  }, []);
+    console.log(typeof pendingInfo);
+  }, [pendingInfo]);
 
   return (
     <>
       <Navbar />
       <div className="pendingWrapper">
         <div className="userDetails">
-          <p>{userInfo?.firstName}</p>
           <p>{userInfo?.role}</p>
+          <p>{userInfo?.firstName}</p>
         </div>
         <div className="pendingHeader">
           <h3>All Pending Requests</h3>
         </div>
         {pendingInfo?.map((info) => {
           return (
-            <div className="pendingColumn" style={{ color: 'white' }}>
+            <div
+              key={info.id}
+              className="pendingColumn"
+              style={{ color: 'white' }}
+            >
               {/* <h3>{info.reimbursementStatus}</h3> */}
               <p>Amount: {info.amount}</p>
               <p>Description: {info.description}</p>
