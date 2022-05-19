@@ -14,6 +14,7 @@ export const ResolvedReqPage: React.FC<any> = () => {
   const resolvedInfo = useSelector(
     (state: RootState) => state.reimbursement.allResolved
   );
+  const userInfo = useSelector((state: RootState) => state.user.user);
 
   const dispatch: AppDispatch = useDispatch();
 
@@ -21,22 +22,28 @@ export const ResolvedReqPage: React.FC<any> = () => {
     // dispatch(getAllPendingByUser());
   }, []);
 
-  // form submit handler
-  // const handleGetAllPending = (event: React.MouseEvent<HTMLButtonElement>) => {
-  //   dispatch(getAllPendingByUser());
-  // };
-
   return (
-    <div className="some-page-wrapper">
+    <>
       <Navbar />
-      <h1> Your Resolved Requests </h1>
-      <div style={{ color: 'white' }}>
-        <ul>
-          {resolvedInfo?.map((info) => {
-            return <li key={info.id}> Description: {info.description}</li>;
-          })}
-        </ul>
+      <div className="resolvedWrapper">
+        <div className="userDetails">
+          <p>{userInfo?.firstName}</p>
+          <p>{userInfo?.role}</p>
+        </div>
+        <div className="resolvedHeader">
+          <h3>All Resolved Requests</h3>
+        </div>
+        {resolvedInfo?.map((info) => {
+          return (
+            <div className="resolvedColumn" style={{ color: 'white' }}>
+              <h3>{info.reimbursementStatus}</h3>
+              <p>Amount: ${info.amount}</p>
+              <p>Description: {info.description}</p>
+              <p>Type: {info.reimbursementType}</p>
+            </div>
+          );
+        })}
       </div>
-    </div>
+    </>
   );
 };

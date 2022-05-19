@@ -20,7 +20,7 @@
   margin-bottom: 2rem;
 }
 
-.pendingHeading {
+.pendingHeader {
   color: var(--text-white);
 }
 
@@ -43,6 +43,12 @@
   transition: 0.5s;
 }
 
-.blue-column {
-  height: 100%;
+.pendingColumn h3 {
+  font-size: 1.6rem;
+  text-align: center;
+  margin: -8px auto;
+}
+
+.pendingColumn > p {
+  margin: 4px 0;
 }

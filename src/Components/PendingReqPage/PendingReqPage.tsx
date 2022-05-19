@@ -32,15 +32,15 @@ export const PendingReqPage: React.FC<any> = () => {
           <p>{userInfo?.firstName}</p>
           <p>{userInfo?.role}</p>
         </div>
-        <div className="pendingHeading">
+        <div className="pendingHeader">
           <h3>All Pending Requests</h3>
         </div>
         {pendingInfo?.map((info) => {
           return (
             <div className="pendingColumn" style={{ color: 'white' }}>
+              {/* <h3>{info.reimbursementStatus}</h3> */}
               <p>Amount: {info.amount}</p>
               <p>Description: {info.description}</p>
-              <p>Status: {info.reimbursementStatus}</p>
               <p>Type: {info.reimbursementType}</p>
             </div>
           );

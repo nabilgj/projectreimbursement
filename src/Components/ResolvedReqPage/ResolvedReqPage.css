@@ -1,0 +1,53 @@
+.resolvedWrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 20px auto;
+  width: 90%;
+  /* background-color: #fff; */
+}
+
+.userDetails {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+
+  background-color: var(--accent);
+  color: var(--text-white);
+
+  border-radius: 10px;
+  width: 100%;
+  margin-bottom: 2rem;
+}
+
+.resolvedHeader {
+  color: var(--text-white);
+}
+
+.resolvedColumn {
+  display: flex;
+  flex-direction: column;
+
+  border: 2px solid var(--btn-blue);
+  border-radius: 10px;
+  background: transparent;
+  color: var(--text-white);
+
+  padding: 1.6rem;
+  width: 50%;
+  margin: 1.6rem auto;
+}
+.resolvedColumn:hover {
+  background: var(--btn-blue);
+  transition: 0.5s;
+}
+
+.resolvedColumn h3 {
+  font-size: 1.6rem;
+  text-align: center;
+  margin: -8px auto;
+}
+
+.resolvedColumn > p {
+  margin: 4px 0;
+}
