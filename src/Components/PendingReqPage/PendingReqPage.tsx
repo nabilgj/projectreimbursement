@@ -16,6 +16,7 @@ export const PendingReqPage: React.FC<any> = () => {
   const pendingInfo = useSelector(
     (state: RootState) => state.reimbursement.allPending
   );
+  const userInfo = useSelector((state: RootState) => state.user.user);
 
   const dispatch: AppDispatch = useDispatch();
 
@@ -23,22 +24,28 @@ export const PendingReqPage: React.FC<any> = () => {
     // dispatch(getAllPendingByUser());
   }, []);
 
-  // form submit handler
-  // const handleGetAllPending = (event: React.MouseEvent<HTMLButtonElement>) => {
-  //   dispatch(getAllPendingByUser());
-  // };
-
   return (
-    <div className="some-page-wrapper">
+    <>
       <Navbar />
-      <h1> Your Pending Requests </h1>
-      <div style={{ color: 'white' }}>
-        <ul>
-          {pendingInfo?.map((info) => {
-            return <li key={info.id}> Description: {info.description}</li>;
-          })}
-        </ul>
+      <div className="pendingWrapper">
+        <div className="userDetails">
+          <p>{userInfo?.firstName}</p>
+          <p>{userInfo?.role}</p>
+        </div>
+        <div className="pendingHeading">
+          <h3>All Pending Requests</h3>
+        </div>
+        {pendingInfo?.map((info) => {
+          return (
+            <div className="pendingColumn" style={{ color: 'white' }}>
+              <p>Amount: {info.amount}</p>
+              <p>Description: {info.description}</p>
+              <p>Status: {info.reimbursementStatus}</p>
+              <p>Type: {info.reimbursementType}</p>
+            </div>
+          );
+        })}
       </div>
-    </div>
+    </>
   );
 };

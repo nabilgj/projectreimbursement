@@ -62,9 +62,6 @@ export const HomeViewDup: React.FC<any> = () => {
       {/* 2nd row */}
       <div className="row2">
         <div className="reimburseColumn">
-          {/* <div className="blue-column">
-
-          </div> */}
           <h3 className="textHeader">Have you submitted reimbursement?</h3>
           <p className="textPara"> View your pending requests</p>
 
