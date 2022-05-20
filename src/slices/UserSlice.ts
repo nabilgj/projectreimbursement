@@ -84,6 +84,7 @@ export const editUser = createAsyncThunk(
         user_id: res.data.user_id,
         username: res.data.username,
         email: res.data.email,
+        password: res.data.password,
         firstName: res.data.firstName,
         lastName: res.data.lastName,
         role: res.data.role,

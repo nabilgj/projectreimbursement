@@ -13,8 +13,8 @@ import { Navbar } from '../../Components/Navbar/Navbar';
 
 // go inside App for routing
 export const ViewAllResolved: React.FC<any> = () => {
-  const pendingInfo = useSelector(
-    (state: RootState) => state.reimbursement.allPending
+  const resolvedInfo = useSelector(
+    (state: RootState) => state.manager.resolvedReimbursements
   );
 
   // let reversePending = pendingInfo?.reverse();
@@ -22,10 +22,10 @@ export const ViewAllResolved: React.FC<any> = () => {
 
   const dispatch: AppDispatch = useDispatch();
 
-  useEffect(() => {
-    // dispatch(getAllPendingByUser());
-    console.log(typeof pendingInfo);
-  }, [pendingInfo]);
+  // useEffect(() => {
+  //   // dispatch(getAllPendingByUser());
+  //   console.log(typeof resolvedInfo);
+  // }, [resolvedInfo]);
 
   return (
     <>
@@ -38,7 +38,7 @@ export const ViewAllResolved: React.FC<any> = () => {
         <div className="pendingHeader">
           <h3>All Resolved Requests</h3>
         </div>
-        {pendingInfo?.map((info) => {
+        {resolvedInfo?.map((info) => {
           return (
             <div
               key={info.id}
@@ -49,6 +49,7 @@ export const ViewAllResolved: React.FC<any> = () => {
               <p>Amount: {info.amount}</p>
               <p>Description: {info.description}</p>
               <p>Type: {info.reimbursementType}</p>
+              <p>Status: {info.reimbursementStatus}</p>
             </div>
           );
         })}

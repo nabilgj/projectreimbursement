@@ -133,28 +133,6 @@ export const EditAccount: React.FC<any> = (spinner: any) => {
             />
           </div>
 
-          <div className="inputDiv">
-            <h4 className="inputH4">User Role</h4>
-            <select name="fm" className="loginInput" onChange={onUserSelect}>
-              <option value="FinanceManager">Finance Manager</option>
-
-              <option value="Employee">Employee</option>
-              {/* <option value="FinanceManager">
-                {userInfo?.role === 'FinanceManager'
-                  ? 'Finance Manager'
-                  : 'Employee'}
-              </option>
-
-              <option value="Employee">
-                {userInfo?.role !== 'FinanceManager'
-                  ? 'FinanceManager'
-                  : 'Employee'}
-              </option> */}
-
-              {/* <option value="Food">Food</option> */}
-            </select>
-          </div>
-
           {/* for description */}
           <div className="inputDiv">
             <h4 className="inputH4"> Password </h4>
@@ -167,6 +145,26 @@ export const EditAccount: React.FC<any> = (spinner: any) => {
               name="password"
               onChange={handleInput}
             />
+          </div>
+
+          <div className="inputDiv">
+            <h4 className="inputH4">User Role</h4>
+            <select name="fm" className="loginInput" onChange={onUserSelect}>
+              {/* <option value="FinanceManager">Finance Manager</option>
+
+              <option value="Employee">Employee</option> */}
+              <option value="FinanceManager">
+                {userInfo?.role === 'FinanceManager'
+                  ? 'Finance Manager'
+                  : 'Employee'}
+              </option>
+
+              <option value="Employee">
+                {userInfo?.role !== 'FinanceManager'
+                  ? 'FinanceManager'
+                  : 'Employee'}
+              </option>
+            </select>
           </div>
         </form>
 

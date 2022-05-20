@@ -16,6 +16,7 @@ interface ManagerSliceState {
   error: boolean;
   reimbursement?: IReimbursement;
   pendingReimbursements?: IReimbursement[];
+  resolvedReimbursements?: IReimbursement[];
   currentProfile?: IUser[];
   allUsers?: IUser[];
 }
@@ -89,6 +90,37 @@ export const getAllPending = createAsyncThunk(
   }
 );
 
+// being called from Button inside HomePage
+export const getAllResolved = createAsyncThunk(
+  'manager/allResolved',
+  async (thunkAPI) => {
+    // user = useSelector((state: RootState) => state.user);
+    // console.log('all users from getAllPending async api call line 62 ', user);
+
+    try {
+      axios.defaults.withCredentials = true;
+      res = await axios.get(
+        'http://localhost:8000/reimbursements/getAllResolved'
+      );
+      console.log(
+        'coming from getAllResolved async api call line 106 ',
+        res.data
+      );
+
+      // return {
+      //   userId: res.data.user_id,
+      //   username: res.data.username,
+      //   email: res.data.email,
+      //   firstName: res.data.firstName,
+      //   lastName: res.data.lastName,
+      //   role: res.data.role,
+      // };
+    } catch (e) {
+      console.log(e);
+    }
+  }
+);
+
 // ================= reducer actions ========================
 // create slice and will be exported as default
 export const ManagerSlice = createSlice({
@@ -129,6 +161,21 @@ export const ManagerSlice = createSlice({
       state.loading = false;
     });
     builder.addCase(getAllPending.rejected, (state, action) => {
+      state.error = true;
+      state.loading = false;
+    });
+
+    // this is where we create our user logic
+    builder.addCase(getAllResolved.pending, (state, action) => {
+      state.loading = true;
+    });
+    builder.addCase(getAllResolved.fulfilled, (state, action) => {
+      // payload is the return from our asyn api call
+      state.resolvedReimbursements = res.data;
+      state.error = false;
+      state.loading = false;
+    });
+    builder.addCase(getAllResolved.rejected, (state, action) => {
       state.error = true;
       state.loading = false;
     });

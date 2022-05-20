@@ -36,10 +36,10 @@ export const EmployeeView: React.FC<any> = () => {
 
           </div> */}
 
-          <h3 className="textHeader">
+          {/* <h3 className="textHeader">
             Did you travel or eat with client lately?
-          </h3>
-          <p className="textPara"> Submit your reimbursement request today!</p>
+          </h3> */}
+          <h3 className="textHeader"> Submit your reimbursement request!</h3>
 
           <Link to="/submitreimbursement" style={{ textDecoration: 'none' }}>
             <button className="reimburseButton">Submit Request</button>
@@ -47,8 +47,7 @@ export const EmployeeView: React.FC<any> = () => {
         </div>
 
         <div className="AccountsColumn">
-          <h3 className="textHeader">Want to make changes to your account?</h3>
-          <p className="textPara"> Click here to see your account</p>
+          <h3 className="textHeader">Click here to see your account</h3>
 
           <Link to="/viewaccount" style={{ textDecoration: 'none' }}>
             <button className="reimburseButton">View Account</button>
@@ -59,8 +58,7 @@ export const EmployeeView: React.FC<any> = () => {
       {/* 2nd row */}
       <div className="row2">
         <div className="reimburseColumn">
-          <h3 className="textHeader">Have you submitted reimbursement?</h3>
-          <p className="textPara"> View your pending requests</p>
+          <h3 className="textHeader">View your pending requests</h3>
 
           <Link to="/pendingrequest" style={{ textDecoration: 'none' }}>
             <button className="reimburseButton" onClick={handleGetAllPending}>
@@ -73,12 +71,11 @@ export const EmployeeView: React.FC<any> = () => {
 
           </div> */}
 
-          <h3 className="textHeader">What do you think about your requests?</h3>
-          <p className="textPara"> Lets check your request status</p>
+          <h3 className="textHeader">View your resolved requests</h3>
 
           <Link to="/resolvedrequest" style={{ textDecoration: 'none' }}>
             <button className="reimburseButton" onClick={handleGetAllResolved}>
-              See Status
+              Resolved Requests
             </button>
           </Link>
         </div>

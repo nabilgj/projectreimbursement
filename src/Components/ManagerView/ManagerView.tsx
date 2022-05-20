@@ -5,7 +5,11 @@ import { Link, useNavigate } from 'react-router-dom';
 
 import { useDispatch } from 'react-redux';
 import { AppDispatch } from '../../store';
-import { getAllPending, getAllUsers } from '../../slices/ManagerSlice';
+import {
+  getAllPending,
+  getAllUsers,
+  getAllResolved,
+} from '../../slices/ManagerSlice';
 
 // go inside HomePage
 export const ManagerView: React.FC<any> = () => {
@@ -29,6 +33,13 @@ export const ManagerView: React.FC<any> = () => {
   };
 
   // click handler for approve deny
+  const handleAllResolved = (event: React.MouseEvent<HTMLButtonElement>) => {
+    dispatch(getAllResolved());
+    console.log('coming handleApproveDeny click button');
+    navigator('/approvedeny');
+  };
+
+  // click handler for approve deny
   const handleApproveDeny = (event: React.MouseEvent<HTMLButtonElement>) => {
     // dispatch(getAllPending());
     console.log('coming handleApproveDeny click button');
@@ -47,8 +58,7 @@ export const ManagerView: React.FC<any> = () => {
       {/* 1st row */}
       <div className="row1">
         <div className="managerColumn">
-          <h3 className="textHeader">All Employees</h3>
-          <p className="textPara">You may view all employees </p>
+          <h3 className="textHeader">View All Employees</h3>
 
           <Link to="/allemployees" style={{ textDecoration: 'none' }}>
             <button className="managerButton" onClick={handleViewAllEmployees}>
@@ -59,8 +69,7 @@ export const ManagerView: React.FC<any> = () => {
         </div>
 
         <div className="AccountsColumn">
-          <h3 className="textHeader">All Pending</h3>
-          <p className="textPara">You may view all pending request </p>
+          <h3 className="textHeader">View All Pending Requests</h3>
 
           <Link to="/approvedeny" style={{ textDecoration: 'none' }}>
             <button className="managerButton" onClick={handleAllPending}>
@@ -74,20 +83,21 @@ export const ManagerView: React.FC<any> = () => {
       {/* 2nd row */}
       <div className="row2">
         <div className="managerColumn">
-          <h3 className="textHeader">All Resolved</h3>
-          <p className="textPara">You may view all resolved request </p>
+          <h3 className="textHeader">View All Resolved Requests</h3>
 
           <Link to="/allresolved" style={{ textDecoration: 'none' }}>
-            <button className="managerButton"> View Resolved </button>
+            <button className="managerButton" onClick={handleAllResolved}>
+              {' '}
+              View Resolved{' '}
+            </button>
           </Link>
         </div>
 
         <div className="managerColumn">
-          <h3 className="textHeader">All Denied</h3>
-          <p className="textPara"> You may view all denied request </p>
+          <h3 className="textHeader">View Requests of a Specific Employee</h3>
 
           <Link to="/approvedeny" style={{ textDecoration: 'none' }}>
-            <button className="managerButton"> View Denied</button>
+            <button className="managerButton"> View Requests </button>
           </Link>
         </div>
       </div>

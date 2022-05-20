@@ -11,6 +11,8 @@ import { getAllPendingByUser } from '../../slices/ReimbursementSlice';
 
 import { Navbar } from '../../Components/Navbar/Navbar';
 
+import { useNavigate } from 'react-router-dom';
+
 // go inside App for routing
 export const ViewAllEmployyes: React.FC<any> = () => {
   const usersAll = useSelector((state: RootState) => state.manager.allUsers);
@@ -18,7 +20,14 @@ export const ViewAllEmployyes: React.FC<any> = () => {
   // let reversePending = pendingInfo?.reverse();
   const userInfo = useSelector((state: RootState) => state.user.user);
 
+  const navigator = useNavigate();
+
   const dispatch: AppDispatch = useDispatch();
+
+  // form submit handler
+  const handleClicked = (event: React.MouseEvent<HTMLButtonElement>) => {
+    navigator('/home');
+  };
 
   return (
     <>
