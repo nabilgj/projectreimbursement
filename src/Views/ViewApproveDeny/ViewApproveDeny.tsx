@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import './ApproveDeny.css';
+import './ViewApproveDeny.css';
 
 import { IReimbursement } from '../../interfaces/IReimbursement';
 
@@ -7,25 +7,27 @@ import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 
 import { RootState, AppDispatch } from '../../store';
-import { getAllPendingByUser } from '../../slices/ReimbursementSlice';
 
 import { Navbar } from '../../Components/Navbar/Navbar';
 
+import { getAllPending } from '../../slices/ManagerSlice';
+
 // go inside App for routing
-export const ApproveDeny: React.FC<any> = () => {
-  const pendingInfo = useSelector(
-    (state: RootState) => state.reimbursement.allPending
+export const ViewApproveDeny: React.FC<any> = () => {
+  const pendingAllInfo = useSelector(
+    (state: RootState) => state.manager.reimbursement
   );
+
+  console.log('coming from ViewApproveDeny line 19 ', pendingAllInfo);
 
   // let reversePending = pendingInfo?.reverse();
   const userInfo = useSelector((state: RootState) => state.user.user);
 
   const dispatch: AppDispatch = useDispatch();
 
-  useEffect(() => {
-    // dispatch(getAllPendingByUser());
-    console.log(typeof pendingInfo);
-  }, [pendingInfo]);
+  // useEffect(() => {
+  //   dispatch(getAllPending());
+  // }, []);
 
   return (
     <>
@@ -38,20 +40,21 @@ export const ApproveDeny: React.FC<any> = () => {
         <div className="pendingHeader">
           <h3>All Pending Requests</h3>
         </div>
-        {pendingInfo?.map((info) => {
+        {/* {ViewApproveDeny} */}
+        {/* {ViewApproveDeny?.map((info) => {
           return (
             <div
               key={info.id}
               className="pendingColumn"
               style={{ color: 'white' }}
             >
-              {/* <h3>{info.reimbursementStatus}</h3> */}
+
               <p>Amount: {info.amount}</p>
               <p>Description: {info.description}</p>
               <p>Type: {info.reimbursementType}</p>
             </div>
           );
-        })}
+        })} */}
 
         <div className="accountButtons">
           <Link to="/home">

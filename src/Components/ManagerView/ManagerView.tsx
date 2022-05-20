@@ -1,31 +1,37 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import './ManagerView.css';
 
 import { Link, useNavigate } from 'react-router-dom';
 
 import { useDispatch } from 'react-redux';
 import { AppDispatch } from '../../store';
-import {
-  getAllPendingByUser,
-  getAllResolvedByUser,
-} from '../../slices/ReimbursementSlice';
+import { getAllPending } from '../../slices/ManagerSlice';
 
 // go inside HomePage
 export const ManagerView: React.FC<any> = () => {
   const dispatch: AppDispatch = useDispatch();
   const navigator = useNavigate();
 
-  // form submit handler
-  const handleGetAllPending = (event: React.MouseEvent<HTMLButtonElement>) => {
-    dispatch(getAllPendingByUser());
-    navigator('/pendingrequest');
+  // click handler for approve deny
+  const handleApproveDeny = (event: React.MouseEvent<HTMLButtonElement>) => {
+    dispatch(getAllPending());
+    console.log('coming handleApproveDeny click button');
+    navigator('/approvedeny');
   };
 
-  // form submit handler
-  const handleGetAllResolved = (event: React.MouseEvent<HTMLButtonElement>) => {
-    dispatch(getAllResolvedByUser());
-    // navigator('/resolvedrequest');
+  // click handler for approve deny
+  const handleAllPending = (event: React.MouseEvent<HTMLButtonElement>) => {
+    dispatch(getAllPending());
+    console.log('coming handleApproveDeny click button');
+    navigator('/approvedeny');
   };
+
+  // useEffect(() => {
+  //   const handleApproveDeny = (event: React.MouseEvent<HTMLButtonElement>) => {
+  //     dispatch(getAllPending());
+  //     navigator('/approvedeny');
+  //   };
+  // }, []);
 
   return (
     <div className="managerWrapper">
@@ -36,7 +42,10 @@ export const ManagerView: React.FC<any> = () => {
           <p className="textPara">You may approve or deny any request </p>
 
           <Link to="/approvedeny" style={{ textDecoration: 'none' }}>
-            <button className="managerButton"> Approve/Deny</button>
+            <button className="managerButton" onClick={handleApproveDeny}>
+              {' '}
+              Approve/Deny
+            </button>
           </Link>
         </div>
 
@@ -45,7 +54,10 @@ export const ManagerView: React.FC<any> = () => {
           <p className="textPara">You may view all pending request </p>
 
           <Link to="/viewpending" style={{ textDecoration: 'none' }}>
-            <button className="managerButton"> View All Pending </button>
+            <button className="managerButton" onClick={handleAllPending}>
+              {' '}
+              View All Pending{' '}
+            </button>
           </Link>
         </div>
       </div>

@@ -1,5 +1,5 @@
 import React from 'react';
-import './HomeViewDup.css';
+import './EmployeeView.css';
 
 import { Link, useNavigate } from 'react-router-dom';
 
@@ -11,7 +11,7 @@ import {
 } from '../../slices/ReimbursementSlice';
 
 // go inside HomePage
-export const HomeViewDup: React.FC<any> = () => {
+export const EmployeeView: React.FC<any> = () => {
   const dispatch: AppDispatch = useDispatch();
   const navigator = useNavigate();
 

@@ -10,7 +10,7 @@ import { useNavigate } from 'react-router-dom';
 
 import { Navbar } from '../../Components/Navbar/Navbar';
 
-import { HomeViewDup } from '../../Components/HomeView/HomeViewDup';
+import { EmployeeView } from '../../Components/EmployeeView/EmployeeView';
 import { ManagerView } from '../../Components/ManagerView/ManagerView';
 
 // go inside App for Route
@@ -41,7 +41,7 @@ export const HomePage: React.FC = () => {
       {userInfo.user?.role === 'FinanceManager' ? (
         <ManagerView />
       ) : (
-        <HomeViewDup />
+        <EmployeeView />
       )}
 
       {/* <div className="userSection">

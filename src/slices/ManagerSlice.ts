@@ -27,17 +27,17 @@ const initialManagerState: ManagerSliceState = {
 
 // ================= asyn thunks ========================
 
-let user;
+let user: any;
 
 // being called from Button inside HomePage
 export const getAllUsers = createAsyncThunk(
   'manager/allusers',
   async (thunkAPI) => {
     user = useSelector((state: RootState) => state.user);
-    console.log('coming from getAllUsers async api call line 40 ', user);
+    console.log('coming from getAllUsers async api call line 37 ', user);
 
     try {
-      const res = await axios.get('http://localhost:8000/users/getAllUsers');
+      res = await axios.get('http://localhost:8000/users/getAllUsers');
       console.log('coming from getAllUsers async api call line 41 ', res.data);
 
       return {
@@ -48,6 +48,38 @@ export const getAllUsers = createAsyncThunk(
         lastName: res.data.lastName,
         role: res.data.role,
       };
+    } catch (e) {
+      console.log(e);
+    }
+  }
+);
+
+let res: any;
+// being called from Button inside HomePage
+export const getAllPending = createAsyncThunk(
+  'manager/allPending',
+  async (thunkAPI) => {
+    // user = useSelector((state: RootState) => state.user);
+    // console.log('all users from getAllPending async api call line 62 ', user);
+
+    try {
+      axios.defaults.withCredentials = true;
+      res = await axios.get(
+        'http://localhost:8000/reimbursements/getAllPending'
+      );
+      // console.log(
+      //   'coming from getAllPending async api call line 70 ',
+      //   res.data
+      // );
+
+      // return {
+      //   userId: res.data.user_id,
+      //   username: res.data.username,
+      //   email: res.data.email,
+      //   firstName: res.data.firstName,
+      //   lastName: res.data.lastName,
+      //   role: res.data.role,
+      // };
     } catch (e) {
       console.log(e);
     }
@@ -78,6 +110,21 @@ export const ManagerSlice = createSlice({
       state.loading = false;
     });
     builder.addCase(getAllUsers.rejected, (state, action) => {
+      state.error = true;
+      state.loading = false;
+    });
+
+    // this is where we create our user logic
+    builder.addCase(getAllPending.pending, (state, action) => {
+      state.loading = true;
+    });
+    builder.addCase(getAllPending.fulfilled, (state, action) => {
+      // payload is the return from our asyn api call
+      state.reimbursement = res.data;
+      state.error = false;
+      state.loading = false;
+    });
+    builder.addCase(getAllPending.rejected, (state, action) => {
       state.error = true;
       state.loading = false;
     });
