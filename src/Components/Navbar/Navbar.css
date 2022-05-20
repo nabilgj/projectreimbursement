@@ -93,7 +93,7 @@
 }
 
 .eLogoutBtn {
-  border: 1px solid var(--btn-blue);
+  border: 1px solid var(--btn-blue) !important;
 }
 
 .eLogoutBtn:hover {
@@ -103,7 +103,7 @@
 }
 
 .mLogoutBtn {
-  border: 1px solid var(--accent);
+  border: 1px solid var(--accent) !important;
 }
 .mLogoutBtn:hover {
   transform: scale(0.98);

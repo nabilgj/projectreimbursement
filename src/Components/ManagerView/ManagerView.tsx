@@ -68,7 +68,7 @@ export const ManagerView: React.FC<any> = () => {
           </Link>
         </div>
 
-        <div className="AccountsColumn">
+        <div className="managerColumn">
           <h3 className="textHeader">View All Pending Requests</h3>
 
           <Link to="/approvedeny" style={{ textDecoration: 'none' }}>

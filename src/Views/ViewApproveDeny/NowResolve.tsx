@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import './ResolvedReqPage.css';
+import './NowResolve.css';
 
 import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
@@ -7,10 +7,10 @@ import { useDispatch, useSelector } from 'react-redux';
 import { RootState, AppDispatch } from '../../store';
 import { getAllResolvedByUser } from '../../slices/ReimbursementSlice';
 
-import { Navbar } from '../Navbar/Navbar';
+import { Navbar } from '../../Components/Navbar/Navbar';
 
 // go inside App for routing
-export const ResolvedReqPage: React.FC<any> = () => {
+export const NowResolve: React.FC<any> = () => {
   const resolvedInfo = useSelector(
     (state: RootState) => state.reimbursement.allResolved
   );
@@ -32,9 +32,9 @@ export const ResolvedReqPage: React.FC<any> = () => {
         </div>
 
         <div className="resolvedHeader">
-          <h3>All Resolved Requests</h3>
+          <h3> Resolve Pending Request </h3>
         </div>
-
+        {/* 
         {resolvedInfo?.map((info) => {
           return (
             <div
@@ -48,10 +48,10 @@ export const ResolvedReqPage: React.FC<any> = () => {
               <p>Type: {info.reimbursementType}</p>
             </div>
           );
-        })}
+        })} */}
 
         <div className="accountButtons">
-          <Link to="/home">
+          <Link to="/approvedeny">
             <button>Back</button>
           </Link>
         </div>

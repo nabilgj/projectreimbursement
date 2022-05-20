@@ -35,9 +35,11 @@ export const PendingReqPage: React.FC<any> = () => {
           <p>{userInfo?.role}</p>
           <p>{userInfo?.firstName}</p>
         </div>
+
         <div className="pendingHeader">
           <h3>All Pending Requests</h3>
         </div>
+
         {pendingInfo?.map((info) => {
           return (
             <div
@@ -52,6 +54,16 @@ export const PendingReqPage: React.FC<any> = () => {
             </div>
           );
         })}
+
+        <div className="accountButtons">
+          <Link to="/home">
+            <button>Back</button>
+          </Link>
+
+          {/* <Link to={`/viewaccount/edit/${userInfo?.firstName}`}>
+            <button>Edit</button>
+          </Link> */}
+        </div>
       </div>
     </>
   );

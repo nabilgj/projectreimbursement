@@ -121,6 +121,39 @@ export const getAllResolved = createAsyncThunk(
   }
 );
 
+type resolveRequest = {
+  reimbursementId?: number;
+  status?: number;
+};
+
+// being called from Approve Button inside ViewApproveDeny
+export const getRequestResolved = createAsyncThunk(
+  'user/resolveReq',
+  async (credentials: resolveRequest, thunkAPI) => {
+    try {
+      axios.defaults.withCredentials = true;
+      const res = await axios.post(
+        'http://localhost:8000/reimbursements/resolveRequest',
+        credentials
+      );
+      console.log('coming from editUser async api call line 139 ', res.data);
+
+      // return {
+      //   user_id: res.data.user_id,
+      //   username: res.data.username,
+      //   email: res.data.email,
+      //   password: res.data.password,
+      //   firstName: res.data.firstName,
+      //   lastName: res.data.lastName,
+      //   role: res.data.role,
+      //   role_id: res.data.role_id,
+      // };
+    } catch (e) {
+      return thunkAPI.rejectWithValue('something went wrong');
+    }
+  }
+);
+
 // ================= reducer actions ========================
 // create slice and will be exported as default
 export const ManagerSlice = createSlice({
@@ -171,11 +204,25 @@ export const ManagerSlice = createSlice({
     });
     builder.addCase(getAllResolved.fulfilled, (state, action) => {
       // payload is the return from our asyn api call
-      state.resolvedReimbursements = res.data;
       state.error = false;
       state.loading = false;
     });
     builder.addCase(getAllResolved.rejected, (state, action) => {
+      state.error = true;
+      state.loading = false;
+    });
+
+    // this is where we create our user logic
+    builder.addCase(getRequestResolved.pending, (state, action) => {
+      state.loading = true;
+    });
+    builder.addCase(getRequestResolved.fulfilled, (state, action) => {
+      // payload is the return from our asyn api call
+      state.resolvedReimbursements = res.data;
+      state.error = false;
+      state.loading = false;
+    });
+    builder.addCase(getRequestResolved.rejected, (state, action) => {
       state.error = true;
       state.loading = false;
     });

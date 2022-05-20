@@ -9,7 +9,7 @@ export interface IReimbursement {
   reimbursementAuthorId?: number;
   reimbursementAuthor?: IUser;
 
-  reimbursement_status_id?: number;
+  reimbursementStatusId?: number;
   reimbursementStatus?: string;
 
   reimbursementTypeId?: number;
