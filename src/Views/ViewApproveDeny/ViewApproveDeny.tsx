@@ -14,11 +14,11 @@ import { getAllPending } from '../../slices/ManagerSlice';
 
 // go inside App for routing
 export const ViewApproveDeny: React.FC<any> = () => {
-  const pendingAllInfo = useSelector(
-    (state: RootState) => state.manager.reimbursement
+  const pendingAll = useSelector(
+    (state: RootState) => state.manager.pendingReimbursements
   );
 
-  console.log('coming from ViewApproveDeny line 19 ', pendingAllInfo);
+  console.log('coming from ViewApproveDeny line 19 ', pendingAll);
 
   // let reversePending = pendingInfo?.reverse();
   const userInfo = useSelector((state: RootState) => state.user.user);
@@ -40,21 +40,21 @@ export const ViewApproveDeny: React.FC<any> = () => {
         <div className="pendingHeader">
           <h3>All Pending Requests</h3>
         </div>
-        {/* {ViewApproveDeny} */}
-        {/* {ViewApproveDeny?.map((info) => {
+
+        {pendingAll?.map((pendingA) => {
           return (
             <div
-              key={info.id}
+              key={pendingA.id}
               className="pendingColumn"
               style={{ color: 'white' }}
             >
-
-              <p>Amount: {info.amount}</p>
-              <p>Description: {info.description}</p>
-              <p>Type: {info.reimbursementType}</p>
+              <p>Amount: {pendingA.amount}</p>
+              <p>Description: {pendingA.description}</p>
+              <p>Statu: {pendingA.reimbursementStatus}</p>
+              <p>Type: {pendingA.reimbursementType}</p>
             </div>
           );
-        })} */}
+        })}
 
         <div className="accountButtons">
           <Link to="/home">

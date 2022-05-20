@@ -32,7 +32,10 @@ export const HomePage: React.FC = () => {
   return (
     <>
       <Navbar />
-      <h2 className="userInfo">Welcome {userInfo.user?.firstName} </h2>
+      <h2 className="userInfo">
+        {userInfo.user?.role === 'FinanceManager' ? 'Manager: ' : 'Employee: '}{' '}
+        {userInfo.user?.firstName}{' '}
+      </h2>
 
       {/* {checkForContent} */}
 

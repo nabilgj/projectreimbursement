@@ -13,19 +13,12 @@ import { Navbar } from '../../Components/Navbar/Navbar';
 
 // go inside App for routing
 export const ViewAllEmployyes: React.FC<any> = () => {
-  const pendingInfo = useSelector(
-    (state: RootState) => state.reimbursement.allPending
-  );
+  const usersAll = useSelector((state: RootState) => state.manager.allUsers);
 
   // let reversePending = pendingInfo?.reverse();
   const userInfo = useSelector((state: RootState) => state.user.user);
 
   const dispatch: AppDispatch = useDispatch();
-
-  useEffect(() => {
-    // dispatch(getAllPendingByUser());
-    console.log(typeof pendingInfo);
-  }, [pendingInfo]);
 
   return (
     <>
@@ -38,17 +31,25 @@ export const ViewAllEmployyes: React.FC<any> = () => {
         <div className="pendingHeader">
           <h3>All Employees</h3>
         </div>
-        {pendingInfo?.map((info) => {
+
+        {/* <div key={info.id} className="pendingColumn" style={{ color: 'white' }}>
+          <p>Amount: {allUsers?.map}</p>
+          <p>Description: {info.description}</p>
+          <p>Type: {info.reimbursementType}</p>
+        </div> */}
+
+        {usersAll?.map((user) => {
           return (
             <div
-              key={info.id}
+              key={user.user_id}
               className="pendingColumn"
               style={{ color: 'white' }}
             >
-              {/* <h3>{info.reimbursementStatus}</h3> */}
-              <p>Amount: {info.amount}</p>
-              <p>Description: {info.description}</p>
-              <p>Type: {info.reimbursementType}</p>
+              <p>First Name: {user.firstName}</p>
+              <p>Last Name: {user.lastName}</p>
+              <p>Username: {user.username}</p>
+              <p>Email: {user.email}</p>
+              <p>Role: {user.role}</p>
             </div>
           );
         })}

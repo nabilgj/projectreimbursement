@@ -15,7 +15,9 @@ interface ManagerSliceState {
   loading: boolean;
   error: boolean;
   reimbursement?: IReimbursement;
+  pendingReimbursements?: IReimbursement[];
   currentProfile?: IUser[];
+  allUsers?: IUser[];
 }
 
 // initial state
@@ -33,10 +35,11 @@ let user: any;
 export const getAllUsers = createAsyncThunk(
   'manager/allusers',
   async (thunkAPI) => {
-    user = useSelector((state: RootState) => state.user);
-    console.log('coming from getAllUsers async api call line 37 ', user);
+    // user = useSelector((state: RootState) => state.user);
+    // console.log('coming from getAllUsers async api call line 37 ', user);
 
     try {
+      axios.defaults.withCredentials = true;
       res = await axios.get('http://localhost:8000/users/getAllUsers');
       console.log('coming from getAllUsers async api call line 41 ', res.data);
 
@@ -106,6 +109,7 @@ export const ManagerSlice = createSlice({
     });
     builder.addCase(getAllUsers.fulfilled, (state, action) => {
       // payload is the return from our asyn api call
+      state.allUsers = res.data;
       state.error = false;
       state.loading = false;
     });
@@ -120,7 +124,7 @@ export const ManagerSlice = createSlice({
     });
     builder.addCase(getAllPending.fulfilled, (state, action) => {
       // payload is the return from our asyn api call
-      state.reimbursement = res.data;
+      state.pendingReimbursements = res.data;
       state.error = false;
       state.loading = false;
     });
