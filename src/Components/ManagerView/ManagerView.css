@@ -1,6 +1,5 @@
 .managerWrapper {
   margin: 16px;
-  /* background-color: red; */
 }
 
 .row1 {
@@ -8,9 +7,7 @@
   flex-direction: row;
   flex-wrap: wrap;
   /* align-items: center; */
-
   margin: 20px 0;
-
   height: 200px;
 }
 
@@ -43,7 +40,7 @@
   flex-wrap: wrap;
   margin: 0 10px;
 
-  border: 1px solid var(--accent);
+  border: 1px solid var(--accent) !important;
   border-radius: 10px;
   background: transparent;
   color: var(--text-white);
@@ -58,14 +55,13 @@
   width: 100%;
   height: 40px;
 
-  border: 2px solid var(--bg);
+  border: 1px solid var(--accent);
   border-radius: 10px;
 
   margin-top: 20px;
   padding: 20px;
 
   font-size: 1rem;
-  font-weight: bold;
 
   text-align: center;
   text-decoration: none;
@@ -74,6 +70,7 @@
 }
 
 .managerButton:hover {
-  transform: scale(0.95);
+  transform: scale(0.98);
   transition: 0.5s;
+  background: transparent;
 }

@@ -8,11 +8,11 @@
 
 .userInfo {
   color: var(--text-white);
-  margin-top: 2rem;
   z-index: 1;
+  margin: 36px 20px;
 
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;
 }
 
 .userSection {

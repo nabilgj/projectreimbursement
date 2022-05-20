@@ -32,52 +32,42 @@ export const ManagerView: React.FC<any> = () => {
       {/* 1st row */}
       <div className="row1">
         <div className="managerColumn">
-          {/* <div className="blue-column">
+          <h3 className="textHeader">Approve/Deny</h3>
+          <p className="textPara">You may approve or deny any request </p>
 
-          </div> */}
-
-          <h3 className="textHeader">Manager</h3>
-          <p className="textPara"> </p>
-
-          {/* <Link to="/submitreimbursement" style={{ textDecoration: 'none' }}>
-            <button className="reimburseButton">Submit Request</button>
-          </Link> */}
+          <Link to="/approvedeny" style={{ textDecoration: 'none' }}>
+            <button className="managerButton"> Approve/Deny</button>
+          </Link>
         </div>
 
         <div className="AccountsColumn">
-          {/* <div className="green-column">
+          <h3 className="textHeader">All Pending</h3>
+          <p className="textPara">You may view all pending request </p>
 
-          </div> */}
-          <h3 className="textHeader">Manager</h3>
-          {/* <p className="textPara"> Click here to see your account</p>
-
-          <Link to="/viewaccount" style={{ textDecoration: 'none' }}>
-            <button className="reimburseButton">View Account</button>
-          </Link> */}
+          <Link to="/viewpending" style={{ textDecoration: 'none' }}>
+            <button className="managerButton"> View All Pending </button>
+          </Link>
         </div>
       </div>
 
       {/* 2nd row */}
       <div className="row2">
         <div className="managerColumn">
-          <h3 className="textHeader">Manager</h3>
-          {/* <p className="textPara"> View your pending requests</p>
+          <h3 className="textHeader">All Resolved</h3>
+          <p className="textPara">You may view all resolved request </p>
 
-          <Link to="/pendingrequest" style={{ textDecoration: 'none' }}>
-            <button className="reimburseButton" onClick={handleGetAllPending}>
-              Pending Requests
-            </button>
-          </Link> */}
+          <Link to="/allresolved" style={{ textDecoration: 'none' }}>
+            <button className="managerButton"> View All Resolved </button>
+          </Link>
         </div>
-        <div className="managerColumn">
-          <h3 className="textHeader">Manager</h3>
-          {/* <p className="textPara"> Lets check your request status</p>
 
-          <Link to="/resolvedrequest" style={{ textDecoration: 'none' }}>
-            <button className="managerButton" onClick={handleGetAllResolved}>
-              See Status
-            </button>
-          </Link> */}
+        <div className="managerColumn">
+          <h3 className="textHeader">All Employees</h3>
+          <p className="textPara">You may view all employees </p>
+
+          <Link to="/allemployees" style={{ textDecoration: 'none' }}>
+            <button className="managerButton"> View All Employees </button>
+          </Link>
         </div>
       </div>
     </div>

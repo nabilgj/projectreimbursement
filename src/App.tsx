@@ -12,6 +12,11 @@ import { ReimbursementForm } from './Components/ReimbursementForm/ReimbursementF
 import { PendingReqPage } from './Components/PendingReqPage/PendingReqPage';
 import { ResolvedReqPage } from './Components/ResolvedReqPage/ResolvedReqPage';
 
+import { ApproveDeny } from './Views/ApproveDeny/ApproveDeny';
+import { ViewAllPending } from './Views/ViewAllPending/ViewAllPending';
+import { ViewAllResolved } from './Views/ViewAllResolved/ViewAllResolved';
+import { ViewAllEmployyes } from './Views/ViewAllEmployyes/ViewAllEmployyes';
+
 import './App.css';
 
 function App() {
@@ -26,6 +31,11 @@ function App() {
         <Route path="/viewaccount/edit/:id" element={<EditAccount />} />
         <Route path="/pendingrequest" element={<PendingReqPage />} />
         <Route path="/resolvedrequest" element={<ResolvedReqPage />} />
+
+        <Route path="/approvedeny" element={<ApproveDeny />} />
+        <Route path="/viewpending" element={<ViewAllPending />} />
+        <Route path="/allresolved" element={<ViewAllResolved />} />
+        <Route path="/allemployees" element={<ViewAllEmployyes />} />
 
         <Route
           path="/reimbursements/getAllRequestsByEmployee/:id"
