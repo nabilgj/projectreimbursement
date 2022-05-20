@@ -1,5 +1,5 @@
 import React from 'react';
-import './HomeViewDup.css';
+import './ManagerView.css';
 
 import { Link, useNavigate } from 'react-router-dom';
 
@@ -11,7 +11,7 @@ import {
 } from '../../slices/ReimbursementSlice';
 
 // go inside HomePage
-export const HomeViewDup: React.FC<any> = () => {
+export const ManagerView: React.FC<any> = () => {
   const dispatch: AppDispatch = useDispatch();
   const navigator = useNavigate();
 
@@ -28,59 +28,56 @@ export const HomeViewDup: React.FC<any> = () => {
   };
 
   return (
-    <div className="some-page-wrapper">
+    <div className="managerWrapper">
       {/* 1st row */}
       <div className="row1">
-        <div className="reimburseColumn">
+        <div className="managerColumn">
           {/* <div className="blue-column">
 
           </div> */}
 
-          <h3 className="textHeader">
-            Did you travel or eat with client lately?
-          </h3>
-          <p className="textPara"> Submit your reimbursement request today!</p>
+          <h3 className="textHeader">Manager</h3>
+          <p className="textPara"> </p>
 
-          <Link to="/submitreimbursement" style={{ textDecoration: 'none' }}>
+          {/* <Link to="/submitreimbursement" style={{ textDecoration: 'none' }}>
             <button className="reimburseButton">Submit Request</button>
-          </Link>
+          </Link> */}
         </div>
 
         <div className="AccountsColumn">
-          <h3 className="textHeader">Want to make changes to your account?</h3>
-          <p className="textPara"> Click here to see your account</p>
+          {/* <div className="green-column">
+
+          </div> */}
+          <h3 className="textHeader">Manager</h3>
+          {/* <p className="textPara"> Click here to see your account</p>
 
           <Link to="/viewaccount" style={{ textDecoration: 'none' }}>
             <button className="reimburseButton">View Account</button>
-          </Link>
+          </Link> */}
         </div>
       </div>
 
       {/* 2nd row */}
       <div className="row2">
-        <div className="reimburseColumn">
-          <h3 className="textHeader">Have you submitted reimbursement?</h3>
-          <p className="textPara"> View your pending requests</p>
+        <div className="managerColumn">
+          <h3 className="textHeader">Manager</h3>
+          {/* <p className="textPara"> View your pending requests</p>
 
           <Link to="/pendingrequest" style={{ textDecoration: 'none' }}>
             <button className="reimburseButton" onClick={handleGetAllPending}>
               Pending Requests
             </button>
-          </Link>
+          </Link> */}
         </div>
-        <div className="reimburseColumn">
-          {/* <div className="green-column">
-
-          </div> */}
-
-          <h3 className="textHeader">What do you think about your requests?</h3>
-          <p className="textPara"> Lets check your request status</p>
+        <div className="managerColumn">
+          <h3 className="textHeader">Manager</h3>
+          {/* <p className="textPara"> Lets check your request status</p>
 
           <Link to="/resolvedrequest" style={{ textDecoration: 'none' }}>
-            <button className="reimburseButton" onClick={handleGetAllResolved}>
+            <button className="managerButton" onClick={handleGetAllResolved}>
               See Status
             </button>
-          </Link>
+          </Link> */}
         </div>
       </div>
     </div>

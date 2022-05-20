@@ -19,12 +19,9 @@
   top: 0;
   width: 100%;
 }
-.mNavBar {
-  background-color: var(--btn-blue);
-}
+.mNavBar,
 .eNavBar {
-  background-color: var(--accent);
-  background: transparent;
+  background-color: transparent;
 }
 
 .profilePic {
@@ -70,11 +67,11 @@
   outline: none;
 }
 
-.logoutBtn {
+.mLogoutBtn,
+.eLogoutBtn {
   background-color: transparent;
   color: var(--text-white);
 
-  border: 1px solid var(--btn-blue);
   border-radius: 10px;
 
   font-weight: bold;
@@ -91,8 +88,21 @@
   outline: none;
 }
 
-.logoutBtn:hover {
+.eLogoutBtn {
+  border: 1px solid var(--btn-blue);
+}
+
+.eLogoutBtn:hover {
   transform: scale(0.98);
   transition: 0.5s;
   background-color: var(--btn-blue);
+}
+
+.mLogoutBtn {
+  border: 1px solid var(--accent);
+}
+.mLogoutBtn:hover {
+  transform: scale(0.98);
+  transition: 0.5s;
+  background-color: var(--accent);
 }

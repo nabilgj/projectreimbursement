@@ -39,16 +39,17 @@ export const loginUser = createAsyncThunk(
         'http://localhost:8000/users/login',
         credentials
       );
-      console.log('coming from lginUser async api call line 41 ', res.data);
+      console.log('coming from loginUser line 42 ', res.data);
 
       return {
-        userId: res.data.user_id,
+        user_id: res.data.user_id,
         username: res.data.username,
         email: res.data.email,
         password: res.data.password,
         firstName: res.data.firstName,
         lastName: res.data.lastName,
         role: res.data.role,
+        role_id: res.data.role_id,
       };
     } catch (e) {
       return thunkAPI.rejectWithValue('something went wrong');
@@ -57,13 +58,14 @@ export const loginUser = createAsyncThunk(
 );
 
 type userEdit = {
-  username: string;
-  firstName: string;
-  lastName: string;
-  email: string;
-  password: string;
-  role_id: number;
-  // userId: number;
+  username?: string;
+  firstName?: string;
+  lastName?: string;
+  email?: string;
+  password?: string;
+  role?: string;
+  user_id?: number;
+  // role_id: number;
 };
 
 // being called from Login Button inside LoginForm
@@ -76,15 +78,16 @@ export const editUser = createAsyncThunk(
         'http://localhost:8000/users/update',
         credentials
       );
-      console.log('coming from lginUser async api call line 69 ', res.data);
+      // console.log('coming from editUser async api call line 79 ', res.data);
 
       return {
-        userId: res.data.user_id,
+        user_id: res.data.user_id,
         username: res.data.username,
         email: res.data.email,
         firstName: res.data.firstName,
         lastName: res.data.lastName,
         role: res.data.role,
+        role_id: res.data.role_id,
       };
     } catch (e) {
       return thunkAPI.rejectWithValue('something went wrong');
@@ -129,12 +132,13 @@ export const getUserDetailsForManager = createAsyncThunk(
       console.log('coming from line 66 ', res);
 
       return {
-        userId: res.data.user_id,
+        user_id: res.data.user_id,
         username: res.data.username,
         email: res.data.email,
         firstName: res.data.firstName,
         lastName: res.data.lastName,
         role: res.data.role,
+        role_id: res.data.role_id,
       };
     } catch (e) {
       return thunkAPI.rejectWithValue('something went wrong');

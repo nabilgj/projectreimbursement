@@ -14,19 +14,17 @@ import { Navbar } from '../Navbar/Navbar';
 export const EditAccount: React.FC<any> = (spinner: any) => {
   const userInfo = useSelector((state: RootState) => state.user.user);
 
-  const [username, setUserName] = useState<string>('');
-  const [firstName, setFirstName] = useState<string>('');
-  const [lastName, setLastName] = useState<string>('');
-  const [email, setEmail] = useState<string>('');
-  const [password, setPassword] = useState<string>('');
+  const [username, setUserName] = useState(userInfo?.username);
+  const [firstName, setFirstName] = useState(userInfo?.firstName);
+  const [lastName, setLastName] = useState(userInfo?.lastName);
+  const [email, setEmail] = useState(userInfo?.email);
+  const [password, setPassword] = useState(userInfo?.password);
 
-  const [roleId, setRoleId] = useState<string>('');
-
-  const userId = userInfo?.userId;
+  const [roleId, setRoleId] = useState(userInfo?.role_id);
 
   const navigator = useNavigate();
 
-  console.log('coming from ReimbursementForm line 27 ', userInfo?.username);
+  console.log('coming from EditAccount line 27 ', userInfo);
 
   const dispatch: AppDispatch = useDispatch();
 
@@ -49,35 +47,28 @@ export const EditAccount: React.FC<any> = (spinner: any) => {
     }
   };
 
-  const onSelectValue = (event: React.ChangeEvent<HTMLSelectElement>) => {
-    if (
-      event.target.value === 'financemanager' &&
-      userInfo?.role !== event.target.value
-    ) {
-      setRoleId('1');
-    } else if (
-      event.target.value === 'employee' &&
-      userInfo?.role !== event.target.value
-    ) {
-      setRoleId('2');
+  const onUserSelect = (event: React.ChangeEvent<HTMLSelectElement>) => {
+    if (event.target.value === 'FinanceManager') {
+      setRoleId(1);
+    } else {
+      setRoleId(2);
     }
   };
 
   // form submit handler
   const handleEditUser = (event: React.MouseEvent<HTMLButtonElement>) => {
     let credentials = {
+      user_id: userInfo?.user_id,
       username: username,
       firstName: firstName,
       lastName: lastName,
       email,
       password,
-      role_id: parseInt(roleId),
-      // userId: userId,
+      role_id: roleId,
     };
 
     console.log('coming from edit account line 69 ', credentials);
     dispatch(editUser(credentials));
-
     navigator('/home');
   };
 
@@ -94,13 +85,9 @@ export const EditAccount: React.FC<any> = (spinner: any) => {
               // autoComplete="off"
               className="loginInput"
               type="text"
-              value={userInfo?.username}
+              value={username}
               name="username"
-              placeholder="username"
-              // onChange={handleInput}
-              onChange={(event: React.ChangeEvent<HTMLInputElement>) =>
-                setUserName(event.target.value)
-              }
+              onChange={handleInput}
             />
           </div>
 
@@ -112,9 +99,8 @@ export const EditAccount: React.FC<any> = (spinner: any) => {
               autoComplete="off"
               className="loginInput"
               type="text"
-              value={userInfo?.firstName}
+              value={firstName}
               name="firstname"
-              placeholder="first name"
               onChange={handleInput}
             />
           </div>
@@ -127,9 +113,8 @@ export const EditAccount: React.FC<any> = (spinner: any) => {
               autoComplete="off"
               className="loginInput"
               type="text"
-              value={userInfo?.lastName}
+              value={lastName}
               name="lastname"
-              placeholder="last name"
               onChange={handleInput}
             />
           </div>
@@ -142,9 +127,8 @@ export const EditAccount: React.FC<any> = (spinner: any) => {
               autoComplete="off"
               className="loginInput"
               type="text"
-              value={userInfo?.email}
+              value={email}
               name="email"
-              placeholder="email"
               onChange={handleInput}
             />
           </div>
@@ -157,27 +141,22 @@ export const EditAccount: React.FC<any> = (spinner: any) => {
               autoComplete="off"
               className="loginInput"
               type="text"
-              value={userInfo?.password}
+              value={password}
               name="password"
-              placeholder="password"
               onChange={handleInput}
             />
           </div>
 
           <div className="inputDiv">
-            <h4 className="inputH4">Reimbursement Type</h4>
-            <select
-              name="financemployee"
-              className="loginInput"
-              onChange={onSelectValue}
-            >
-              <option value="financemanager">
+            <h4 className="inputH4">User Role</h4>
+            <select name="fm" className="loginInput" onChange={onUserSelect}>
+              <option value="FinanceManager">
                 {userInfo?.role === 'FinanceManager'
                   ? 'Finance Manager'
                   : 'Employee'}
               </option>
 
-              <option value="employee">
+              <option value="Employee">
                 {userInfo?.role !== 'Employee' ? 'Employee' : 'Finance Manager'}
               </option>
 

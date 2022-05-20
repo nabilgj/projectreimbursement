@@ -79,7 +79,12 @@ export const Navbar: React.FC = () => {
 
           </Link> */}
 
-          <button className="logoutBtn" onClick={handleLogout}>
+          <button
+            className={
+              user?.role === 'FinanceManager' ? 'mLogoutBtn' : 'eLogoutBtn'
+            }
+            onClick={handleLogout}
+          >
             Logout
           </button>
         </li>

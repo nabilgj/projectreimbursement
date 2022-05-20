@@ -16,11 +16,11 @@ export const ViewAccount: React.FC<any> = () => {
 
   const dispatch: AppDispatch = useDispatch();
 
-  console.log('coming from view account lint 19 ', userInfo);
+  console.log('coming from view account line 19 ', userInfo);
 
   useEffect(() => {
     // dispatch(getAllPendingByUser());
-  }, []);
+  }, [userInfo]);
 
   return (
     <>

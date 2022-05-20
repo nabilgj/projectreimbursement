@@ -11,11 +11,14 @@ import { useNavigate } from 'react-router-dom';
 import { Navbar } from '../../Components/Navbar/Navbar';
 
 import { HomeViewDup } from '../../Components/HomeView/HomeViewDup';
+import { ManagerView } from '../../Components/ManagerView/ManagerView';
 
 // go inside App for Route
 export const HomePage: React.FC = () => {
   const userInfo = useSelector((state: RootState) => state.user);
   const dispatch: AppDispatch = useDispatch();
+
+  console.log('coming from line 20 to see role ', userInfo);
 
   const navigator = useNavigate();
 
@@ -34,7 +37,12 @@ export const HomePage: React.FC = () => {
       {/* {checkForContent} */}
 
       {/* home page - comes from outside component */}
-      <HomeViewDup />
+
+      {userInfo.user?.role === 'FinanceManager' ? (
+        <ManagerView />
+      ) : (
+        <HomeViewDup />
+      )}
 
       {/* <div className="userSection">
         <div className="reimbursementSection">
