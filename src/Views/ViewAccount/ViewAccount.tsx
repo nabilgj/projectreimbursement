@@ -25,7 +25,7 @@ export const ViewAccount: React.FC<any> = () => {
   return (
     <>
       <Navbar />
-      <div className="pendingWrapper">
+      <div className="viewAccountWrapper">
         <div className="userDetails">
           <p>{userInfo?.role}</p>
           <p>{userInfo?.username}</p>

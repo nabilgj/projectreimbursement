@@ -59,6 +59,10 @@
   text-decoration: none;
   cursor: pointer;
 }
+.navLink:hover {
+  color: var(--btn-blue);
+  transition: 0.5s;
+}
 
 .logout {
   display: flex;
@@ -77,8 +81,8 @@
   font-weight: bold;
   font-size: 1rem;
 
-  width: 100px;
-  height: 40px;
+  width: 80px;
+  height: 35px;
 
   text-align: center;
   text-decoration: none;
