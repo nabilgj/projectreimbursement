@@ -39,8 +39,15 @@ export const ViewApproveDeny: React.FC<any> = () => {
     navigator('/home');
   };
 
-  const handleDenied = () => {
-    console.log('denied');
+  const handleDenied = (id: number) => {
+    let credentials = {
+      reimbursementId: id,
+      status: 3,
+    };
+
+    console.log('Denied');
+    dispatch(getRequestResolved(credentials));
+    navigator('/home');
   };
 
   useEffect(() => {}, [pendingAll]);
@@ -69,7 +76,7 @@ export const ViewApproveDeny: React.FC<any> = () => {
               <p>Status: {pendingA.reimbursementStatus}</p>
               <p>Type: {pendingA.reimbursementType}</p>
 
-              <div className="accountButtons">
+              <div className="pendingButtons">
                 {/* <Link to="/home">
 
                 </Link> */}
@@ -78,13 +85,17 @@ export const ViewApproveDeny: React.FC<any> = () => {
                   Approve
                 </button>
 
-                <Link to="/home">
-                  <button onClick={handleDenied}>Deny</button>
-                </Link>
+                <button onClick={() => handleDenied(pendingA.id!)}>Deny</button>
               </div>
             </div>
           );
         })}
+
+        <div className="employeeButtons">
+          <Link to="/home">
+            <button>back</button>
+          </Link>
+        </div>
       </div>
     </>
   );

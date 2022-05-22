@@ -17,6 +17,7 @@ import { NowResolve } from './Views/ViewApproveDeny/NowResolve';
 import { ViewAllPending } from './Views/ViewAllPending/ViewAllPending';
 import { ViewAllResolved } from './Views/ViewAllResolved/ViewAllResolved';
 import { ViewAllEmployyes } from './Views/ViewAllEmployyes/ViewAllEmployyes';
+import { ViewIndividualEmployee } from './Views/ViewAllEmployyes/ViewIndividualEmployee';
 
 import './App.css';
 
@@ -33,13 +34,13 @@ function App() {
         <Route path="/pendingrequest" element={<PendingReqPage />} />
         <Route path="/resolvedrequest" element={<ResolvedReqPage />} />
 
-        <Route path="/approvedeny/resolve?id&status" element={<NowResolve />} />
+        {/* <Route path="/approvedeny/resolve?id&status" element={<NowResolve />} /> */}
 
+        <Route path="/allemployees" element={<ViewAllEmployyes />} />
+        <Route path="/allemployees/:id" element={<ViewIndividualEmployee />} />
         <Route path="/approvedeny" element={<ViewApproveDeny />} />
-
         <Route path="/viewpending" element={<ViewAllPending />} />
         <Route path="/allresolved" element={<ViewAllResolved />} />
-        <Route path="/allemployees" element={<ViewAllEmployyes />} />
 
         <Route
           path="/reimbursements/getAllRequestsByEmployee/:id"

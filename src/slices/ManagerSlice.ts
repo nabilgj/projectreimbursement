@@ -17,8 +17,10 @@ interface ManagerSliceState {
   reimbursement?: IReimbursement;
   pendingReimbursements?: IReimbursement[];
   resolvedReimbursements?: IReimbursement[];
+  requestResolve?: IReimbursement[];
   currentProfile?: IUser[];
   allUsers?: IUser[];
+  indEmployee?: IReimbursement[];
 }
 
 // initial state
@@ -42,7 +44,7 @@ export const getAllUsers = createAsyncThunk(
     try {
       axios.defaults.withCredentials = true;
       res = await axios.get('http://localhost:8000/users/getAllUsers');
-      console.log('coming from getAllUsers async api call line 41 ', res.data);
+      console.log('coming from getAllUsers async api call line 46 ', res.data);
 
       return {
         userId: res.data.user_id,
@@ -71,19 +73,6 @@ export const getAllPending = createAsyncThunk(
       res = await axios.get(
         'http://localhost:8000/reimbursements/getAllPending'
       );
-      // console.log(
-      //   'coming from getAllPending async api call line 70 ',
-      //   res.data
-      // );
-
-      // return {
-      //   userId: res.data.user_id,
-      //   username: res.data.username,
-      //   email: res.data.email,
-      //   firstName: res.data.firstName,
-      //   lastName: res.data.lastName,
-      //   role: res.data.role,
-      // };
     } catch (e) {
       console.log(e);
     }
@@ -94,9 +83,6 @@ export const getAllPending = createAsyncThunk(
 export const getAllResolved = createAsyncThunk(
   'manager/allResolved',
   async (thunkAPI) => {
-    // user = useSelector((state: RootState) => state.user);
-    // console.log('all users from getAllPending async api call line 62 ', user);
-
     try {
       axios.defaults.withCredentials = true;
       res = await axios.get(
@@ -106,15 +92,6 @@ export const getAllResolved = createAsyncThunk(
         'coming from getAllResolved async api call line 106 ',
         res.data
       );
-
-      // return {
-      //   userId: res.data.user_id,
-      //   username: res.data.username,
-      //   email: res.data.email,
-      //   firstName: res.data.firstName,
-      //   lastName: res.data.lastName,
-      //   role: res.data.role,
-      // };
     } catch (e) {
       console.log(e);
     }
@@ -137,17 +114,26 @@ export const getRequestResolved = createAsyncThunk(
         credentials
       );
       console.log('coming from editUser async api call line 139 ', res.data);
+    } catch (e) {
+      return thunkAPI.rejectWithValue('something went wrong');
+    }
+  }
+);
 
-      // return {
-      //   user_id: res.data.user_id,
-      //   username: res.data.username,
-      //   email: res.data.email,
-      //   password: res.data.password,
-      //   firstName: res.data.firstName,
-      //   lastName: res.data.lastName,
-      //   role: res.data.role,
-      //   role_id: res.data.role_id,
-      // };
+// type individualEmp = {
+//   id: number;
+// };
+
+// being called from Approve Button inside ViewApproveDeny
+export const getSingleEmployeeRequests = createAsyncThunk(
+  'user/singleEmployee',
+  async (id: number, thunkAPI) => {
+    try {
+      axios.defaults.withCredentials = true;
+      res = await axios.get(
+        `http://localhost:8000/reimbursements/getAllRequestsByEmployee/${id}`
+      );
+      console.log('coming from editUser async api call line 131 ', res.data);
     } catch (e) {
       return thunkAPI.rejectWithValue('something went wrong');
     }
@@ -204,6 +190,7 @@ export const ManagerSlice = createSlice({
     });
     builder.addCase(getAllResolved.fulfilled, (state, action) => {
       // payload is the return from our asyn api call
+      state.requestResolve = res.data;
       state.error = false;
       state.loading = false;
     });
@@ -223,6 +210,21 @@ export const ManagerSlice = createSlice({
       state.loading = false;
     });
     builder.addCase(getRequestResolved.rejected, (state, action) => {
+      state.error = true;
+      state.loading = false;
+    });
+
+    // this is where we create our user logic
+    builder.addCase(getSingleEmployeeRequests.pending, (state, action) => {
+      state.loading = true;
+    });
+    builder.addCase(getSingleEmployeeRequests.fulfilled, (state, action) => {
+      // payload is the return from our asyn api call
+      state.indEmployee = res.data;
+      state.error = false;
+      state.loading = false;
+    });
+    builder.addCase(getSingleEmployeeRequests.rejected, (state, action) => {
       state.error = true;
       state.loading = false;
     });

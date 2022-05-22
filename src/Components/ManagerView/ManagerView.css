@@ -74,3 +74,13 @@
   transition: 0.5s;
   background: transparent;
 }
+
+.managerButton.disabled {
+  cursor: not-allowed;
+  background-color: transparent !important;
+  font-weight: 100;
+}
+
+.managerButton.disabled:hover {
+  transform: scale(1);
+}

@@ -13,8 +13,8 @@ import { Navbar } from '../../Components/Navbar/Navbar';
 
 // go inside App for routing
 export const ViewAllResolved: React.FC<any> = () => {
-  const resolvedInfo = useSelector(
-    (state: RootState) => state.manager.resolvedReimbursements
+  const resolveRequest = useSelector(
+    (state: RootState) => state.manager.requestResolve
   );
 
   // let reversePending = pendingInfo?.reverse();
@@ -38,7 +38,7 @@ export const ViewAllResolved: React.FC<any> = () => {
         <div className="pendingHeader">
           <h3>All Resolved Requests</h3>
         </div>
-        {resolvedInfo?.map((info) => {
+        {resolveRequest?.map((info) => {
           return (
             <div
               key={info.id}

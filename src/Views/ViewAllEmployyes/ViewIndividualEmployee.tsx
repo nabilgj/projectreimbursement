@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import './ViewAllEmployyes.css';
+import './ViewIndividualEmployee.css';
 
 import { IReimbursement } from '../../interfaces/IReimbursement';
 
@@ -7,15 +7,15 @@ import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 
 import { RootState, AppDispatch } from '../../store';
-import { getSingleEmployeeRequests } from '../../slices/ManagerSlice';
+import { getAllPendingByUser } from '../../slices/ReimbursementSlice';
 
 import { Navbar } from '../../Components/Navbar/Navbar';
 
 import { useNavigate } from 'react-router-dom';
 
 // go inside App for routing
-export const ViewAllEmployyes: React.FC<any> = () => {
-  const usersAll = useSelector((state: RootState) => state.manager.allUsers);
+export const ViewIndividualEmployee: React.FC<any> = () => {
+  const emp = useSelector((state: RootState) => state.manager.indEmployee);
 
   // let reversePending = pendingInfo?.reverse();
   const userInfo = useSelector((state: RootState) => state.user.user);
@@ -24,9 +24,9 @@ export const ViewAllEmployyes: React.FC<any> = () => {
 
   const dispatch: AppDispatch = useDispatch();
 
-  const handleGetIndividualEmployee = (id: number) => {
-    console.log('handleGetIndividualEmployee');
-    dispatch(getSingleEmployeeRequests(id));
+  // form submit handler
+  const handleClicked = (event: React.MouseEvent<HTMLButtonElement>) => {
+    navigator('/home');
   };
 
   return (
@@ -41,27 +41,26 @@ export const ViewAllEmployyes: React.FC<any> = () => {
           <h3>All Employees</h3>
         </div>
 
-        {usersAll?.map((user) => {
+        {emp?.map((emp) => {
           return (
             <Link
-              to={`/allemployees/${user.user_id}?user=${user.firstName}`}
+              to={`/allemployees/${emp.id}`}
               className="employeeColumn"
-              key={user.user_id}
-              onClick={() => handleGetIndividualEmployee(user?.user_id!)}
+              key={emp.id}
             >
-              <div key={user.user_id} style={{ color: 'white' }}>
-                <p>First Name: {user.firstName}</p>
-                <p>Last Name: {user.lastName}</p>
-                <p>Username: {user.username}</p>
-                <p>Email: {user.email}</p>
-                <p>Role: {user.role}</p>
+              <div style={{ color: 'white' }}>
+                <p>Amount {emp.amount}</p>
+                <p>Description: {emp.description}</p>
+                <p>Status: {emp.reimbursementStatus}</p>
+                <p>Type: {emp.reimbursementType}</p>
+                <p>Resolver: {emp.reimbursementResolverId}</p>
               </div>
             </Link>
           );
         })}
 
         <div className="employeeButtons">
-          <Link to="/home">
+          <Link to="/allemployees">
             <button>back</button>
           </Link>
         </div>

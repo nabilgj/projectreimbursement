@@ -1,0 +1,72 @@
+.pendingWrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 20px auto;
+  width: 90%;
+  /* background-color: #fff; */
+}
+
+.userDetails {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+
+  background-color: var(--accent);
+  color: var(--text-white);
+
+  border-radius: 10px;
+  width: 100%;
+  margin-bottom: 2rem;
+}
+
+.pendingHeader {
+  color: var(--text-white);
+}
+
+.pendingColumn {
+  display: flex;
+  flex-direction: column;
+  align-items: space-between !important;
+
+  border: 1px solid var(--accent) !important;
+  border-radius: 10px;
+  background: transparent;
+  color: var(--text-white);
+
+  padding: 2rem;
+  width: 50%;
+  margin: 10px auto;
+}
+.pendingColumn:hover {
+  background: var(--accent) !important;
+  transition: 0.5s;
+}
+
+.pendingColumn h3 {
+  font-size: 1.6rem;
+  text-align: center;
+  margin: -8px auto;
+}
+
+.pendingColumn > p {
+  margin: 4px 0;
+}
+
+.pendingButtons {
+  display: flex;
+  justify-content: center;
+
+  width: 100%;
+}
+
+.pendingButtons button {
+  border-radius: 10px;
+  width: 80%;
+  text-align: center;
+}
+
+.pendingButtons button:hover {
+  border: 1px solid var(--text-white);
+  transition: 0.5s;
+}

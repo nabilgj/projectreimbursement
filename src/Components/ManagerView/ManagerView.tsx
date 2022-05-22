@@ -21,22 +21,21 @@ export const ManagerView: React.FC<any> = () => {
     event: React.MouseEvent<HTMLButtonElement>
   ) => {
     dispatch(getAllUsers());
-    console.log('coming handleApproveDeny click button');
-    navigator('/allemployees');
+    console.log('coming handleViewAllEmployees click button');
+    // navigator('/allemployees');
   };
 
   // click handler for approve deny
   const handleAllPending = (event: React.MouseEvent<HTMLButtonElement>) => {
     dispatch(getAllPending());
     console.log('coming handleApproveDeny click button');
-    navigator('/approvedeny');
+    // navigator('/approvedeny');
   };
 
   // click handler for approve deny
   const handleAllResolved = (event: React.MouseEvent<HTMLButtonElement>) => {
     dispatch(getAllResolved());
     console.log('coming handleApproveDeny click button');
-    navigator('/approvedeny');
   };
 
   // click handler for approve deny
@@ -94,10 +93,13 @@ export const ManagerView: React.FC<any> = () => {
         </div>
 
         <div className="managerColumn">
-          <h3 className="textHeader">View Requests of a Specific Employee</h3>
+          <h3 className="textHeader">Promote An Employee</h3>
 
           <Link to="/approvedeny" style={{ textDecoration: 'none' }}>
-            <button className="managerButton"> View Requests </button>
+            <button className="managerButton disabled" disabled={false}>
+              {' '}
+              Coming Soon{' '}
+            </button>
           </Link>
         </div>
       </div>
