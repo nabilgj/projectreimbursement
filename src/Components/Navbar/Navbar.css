@@ -59,7 +59,11 @@
   text-decoration: none;
   cursor: pointer;
 }
-.navLink:hover {
+.mNavLink:hover {
+  color: var(--accent);
+  transition: 0.5s;
+}
+.eNavLink:hover {
   color: var(--btn-blue);
   transition: 0.5s;
 }

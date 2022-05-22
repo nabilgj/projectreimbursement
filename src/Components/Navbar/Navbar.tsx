@@ -30,8 +30,23 @@ export const Navbar: React.FC = () => {
   return (
     <nav className={user?.role === 'FinanceManager' ? 'mNavBar' : 'eNavBar'}>
       {/* <img className="profilePic" src={profilepic} /> */}
-      <Link to={'/home'} className="navLink">
-        <p className="profilePic">{user?.username}</p>
+      <Link
+        to={'/home'}
+        className={
+          user?.role === 'FinanceManager'
+            ? 'mNavLink navLink'
+            : 'eNavLink navLink'
+        }
+      >
+        <p
+          className={
+            user?.role === 'FinanceManager'
+              ? 'mNavLink profilePic'
+              : 'eNavLink profilePic'
+          }
+        >
+          {user?.username}
+        </p>
       </Link>
 
       <ul className="navMenu">
@@ -57,7 +72,11 @@ export const Navbar: React.FC = () => {
                 ? '/login'
                 : '/submitreimbursement'
             }
-            className="navLink"
+            className={
+              user?.role === 'FinanceManager'
+                ? 'mNavLink navLink'
+                : 'eNavLink navLink'
+            }
           >
             {user?.role === 'FinanceManager'
               ? 'See Reimbursements'
@@ -68,7 +87,11 @@ export const Navbar: React.FC = () => {
         <li className="navItem">
           <Link
             to={user?.role === 'FinanceManager' ? '/login' : '/resolvedrequest'}
-            className="navLink"
+            className={
+              user?.role === 'FinanceManager'
+                ? 'mNavLink navLink'
+                : 'eNavLink navLink'
+            }
           >
             {user?.role === 'FinanceManager' ? 'All Requests' : 'All Request'}
           </Link>
