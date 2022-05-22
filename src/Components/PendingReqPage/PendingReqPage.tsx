@@ -31,7 +31,7 @@ export const PendingReqPage: React.FC<any> = () => {
     <>
       <Navbar />
       <div className="pendingWrapper">
-        <div className="userDetails">
+        <div className="pendingDetails">
           <p>{userInfo?.role}</p>
           <p>{userInfo?.firstName}</p>
         </div>
@@ -55,14 +55,10 @@ export const PendingReqPage: React.FC<any> = () => {
           );
         })}
 
-        <div className="accountButtons">
+        <div className="pendingButtons">
           <Link to="/home">
             <button>Back</button>
           </Link>
-
-          {/* <Link to={`/viewaccount/edit/${userInfo?.firstName}`}>
-            <button>Edit</button>
-          </Link> */}
         </div>
       </div>
     </>

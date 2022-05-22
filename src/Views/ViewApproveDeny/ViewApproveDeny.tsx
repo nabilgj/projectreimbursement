@@ -55,12 +55,12 @@ export const ViewApproveDeny: React.FC<any> = () => {
   return (
     <>
       <Navbar />
-      <div className="pendingWrapper">
-        <div className="userDetails">
+      <div className="approveDenyWrapper">
+        <div className="approveDenyDetails">
           <p>{userInfo?.role}</p>
           <p>{userInfo?.firstName}</p>
         </div>
-        <div className="pendingHeader">
+        <div className="approveDenyHeader">
           <h3>All Pending Requests</h3>
         </div>
 
@@ -68,7 +68,7 @@ export const ViewApproveDeny: React.FC<any> = () => {
           return (
             <div
               key={pendingA.id}
-              className="pendingColumn"
+              className="approveDenyColumn"
               style={{ color: 'white' }}
             >
               <p>Amount: ${pendingA.amount}</p>
@@ -76,7 +76,7 @@ export const ViewApproveDeny: React.FC<any> = () => {
               <p>Status: {pendingA.reimbursementStatus}</p>
               <p>Type: {pendingA.reimbursementType}</p>
 
-              <div className="pendingButtons">
+              <div className="approveDenyButtons">
                 {/* <Link to="/home">
 
                 </Link> */}

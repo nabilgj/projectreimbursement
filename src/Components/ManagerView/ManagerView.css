@@ -2,7 +2,7 @@
   margin: 16px;
 }
 
-.row1 {
+.managerRow1 {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
@@ -11,7 +11,7 @@
   height: 200px;
 }
 
-.row2 {
+.managerRow2 {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
@@ -19,17 +19,11 @@
   height: 200px;
 }
 
-.textHeader,
-.textPara {
+.managerTextHeader {
   text-align: center;
 }
 
-.textPara {
-  margin-top: 10px;
-}
-
-.managerColumn,
-.AccountsColumn {
+.managerColumn {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -47,7 +41,7 @@
 }
 
 .managerButton {
-  background-color: var(--accent);
+  background-color: transparent;
   color: var(--text-white);
 
   display: flex;
@@ -70,6 +64,7 @@
 }
 
 .managerButton:hover {
+  background-color: var(--accent) !important;
   transform: scale(0.98);
   transition: 0.5s;
   background: transparent;
@@ -79,6 +74,8 @@
   cursor: not-allowed;
   background-color: transparent !important;
   font-weight: 100;
+  border: 1px solid var(--accent) !important;
+  color: var(--grey) !important;
 }
 
 .managerButton.disabled:hover {

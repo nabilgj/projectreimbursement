@@ -30,19 +30,19 @@ export const ViewAllResolved: React.FC<any> = () => {
   return (
     <>
       <Navbar />
-      <div className="pendingWrapper">
-        <div className="userDetails">
+      <div className="allResolvedWrapper">
+        <div className="allResolvedDetails">
           <p>{userInfo?.role}</p>
           <p>{userInfo?.firstName}</p>
         </div>
-        <div className="pendingHeader">
+        <div className="allResolvedHeader">
           <h3>All Resolved Requests</h3>
         </div>
         {resolveRequest?.map((info) => {
           return (
             <div
               key={info.id}
-              className="pendingColumn"
+              className="allResolvedColumn"
               style={{ color: 'white' }}
             >
               {/* <h3>{info.reimbursementStatus}</h3> */}
@@ -54,14 +54,10 @@ export const ViewAllResolved: React.FC<any> = () => {
           );
         })}
 
-        <div className="accountButtons">
+        <div className="allResolvedButtons">
           <Link to="/home">
             <button>back</button>
           </Link>
-
-          {/* <Link to="/approvedeny">
-            <button>Resolve</button>
-          </Link> */}
         </div>
       </div>
     </>

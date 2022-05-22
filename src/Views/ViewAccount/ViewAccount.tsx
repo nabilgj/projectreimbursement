@@ -26,12 +26,12 @@ export const ViewAccount: React.FC<any> = () => {
     <>
       <Navbar />
       <div className="viewAccountWrapper">
-        <div className="userDetails">
+        <div className="accountDetails">
           <p>{userInfo?.role}</p>
           <p>{userInfo?.username}</p>
         </div>
-        <div className="pendingHeader">{/* <h3>User Information</h3> */}</div>
-        <div className="pendingColumn" style={{ color: 'white' }}>
+
+        <div className="accountColumn" style={{ color: 'white' }}>
           <p>Username: {userInfo?.username}</p>
           <p>FirstName: {userInfo?.firstName}</p>
           <p>LastName: {userInfo?.lastName}</p>

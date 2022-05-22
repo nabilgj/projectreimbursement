@@ -1,0 +1,82 @@
+.allResolvedWrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 20px auto;
+  width: 90%;
+  /* background-color: #fff; */
+}
+
+.allResolvedDetails {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+
+  background-color: var(--accent);
+  color: var(--text-white);
+
+  border-radius: 10px;
+  width: 100%;
+  margin-bottom: 2rem;
+  padding: 3px;
+}
+
+.allResolvedHeader {
+  color: var(--text-white);
+}
+
+.allResolvedColumn {
+  display: flex;
+  flex-direction: column;
+  align-items: space-between !important;
+
+  border: 1px solid var(--accent) !important;
+  border-radius: 10px;
+  background: transparent;
+  color: var(--text-white);
+
+  padding: 2rem;
+  width: 50%;
+  margin: 10px auto;
+}
+.allResolvedColumn:hover {
+  background: var(--accent) !important;
+  transition: 0.5s;
+}
+
+.allResolvedColumn h3 {
+  font-size: 1.6rem;
+  text-align: center;
+  margin: -8px auto;
+}
+
+.allResolvedColumn > p {
+  margin: 4px 0;
+}
+
+.allResolvedButtons {
+  display: flex;
+  background-color: var(--accent) !important;
+  width: 100%;
+  justify-content: center;
+  align-items: space-around;
+  border-radius: 10px;
+  margin: 20px auto;
+}
+
+.allResolvedButtons a {
+  padding: 3px;
+}
+
+.allResolvedButtons button {
+  border-radius: 10px;
+  padding: 0 10px;
+  border: 1px solid var(--accent) !important;
+}
+
+.allResolvedButtons button:hover {
+  background-color: transparent;
+  border: 1px solid var(--text-white) !important;
+  transition: 0.5s;
+  color: var(--text-white);
+}

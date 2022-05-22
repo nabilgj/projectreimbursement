@@ -28,10 +28,7 @@ const initialReimbursementState: ReimbursementSliceState = {
 // ================= asyn thunks ========================
 type reimb = {
   amount: number;
-  // submitted_date: string;
   description: string;
-  // reimbursement_author?: number;
-  // reimbursement_status_id: number;
   reimbursementType: number;
 };
 

@@ -7,17 +7,18 @@
   /* background-color: #fff; */
 }
 
-.userDetails {
+.pendingDetails {
   display: flex;
   justify-content: space-around;
   align-items: center;
 
-  background-color: var(--accent);
+  background-color: var(--btn-blue) !important;
   color: var(--text-white);
 
   border-radius: 10px;
   width: 100%;
   margin-bottom: 2rem;
+  padding: 3px;
 }
 
 .pendingHeader {
@@ -30,16 +31,16 @@
   align-items: flex-start;
 
   border: 1px solid var(--btn-blue) !important;
+  color: var(--text-white);
   border-radius: 10px;
   background: transparent;
-  color: var(--text-white);
 
   padding: 2rem;
   width: 50%;
   margin: 10px auto;
 }
 .pendingColumn:hover {
-  background: var(--btn-blue);
+  background: var(--btn-blue) !important;
   transition: 0.5s;
 }
 
@@ -50,5 +51,32 @@
 }
 
 .pendingColumn > p {
-  margin: 4px 0;
+  margin: 3px 0;
+}
+
+.pendingButtons {
+  display: flex;
+  background-color: var(--btn-blue) !important;
+  width: 100%;
+  justify-content: center;
+  align-items: space-around;
+  border-radius: 10px;
+  margin: 20px auto;
+}
+
+.pendingButtons a {
+  padding: 3px;
+}
+
+.pendingButtons button {
+  border-radius: 10px;
+  padding: 0 10px;
+  border: 1px solid var(--btn-blue) !important;
+}
+
+.pendingButtons button:hover {
+  background-color: transparent;
+  border: 1px solid var(--text-white);
+  transition: 0.5s;
+  color: var(--text-white);
 }

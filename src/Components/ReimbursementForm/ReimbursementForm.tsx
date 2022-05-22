@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import './ReimbursementForm.css';
 
+import { Link } from 'react-router-dom';
+
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 
@@ -19,12 +21,6 @@ export const ReimbursementForm: React.FC<any> = (spinner: any) => {
   const userInfo = useSelector((state: RootState) => state.user);
   const reimburseInfo = useSelector((state: RootState) => state.reimbursement);
   const navigator = useNavigate();
-
-  console.log('coming from ReimbursementForm line 20 ', userInfo.user?.role);
-  console.log(
-    'coming from reimburseInfo line 25 ',
-    reimburseInfo.reimbursement
-  );
 
   const dispatch: AppDispatch = useDispatch();
   const [pendingInfo, setPendingInfo] = useState([]);
@@ -82,6 +78,11 @@ export const ReimbursementForm: React.FC<any> = (spinner: any) => {
     <>
       <Navbar />
       <div className="reimburseForm">
+        <div className="accountDetails">
+          {/* <p>{userInfo?.role}</p> */}
+          <p>Submit Your Request</p>
+        </div>
+
         <form className="loginForm">
           {/* for email */}
           <div className="inputDiv">
@@ -111,20 +112,6 @@ export const ReimbursementForm: React.FC<any> = (spinner: any) => {
             />
           </div>
 
-          {/* for reimbursementType */}
-          {/* <div className="inputDiv">
-            <h4 className="inputH4">Reimbursement Type</h4>
-
-            <input
-              autoComplete="off"
-              className="loginInput"
-              type="number"
-              name="rType"
-              placeholder="reimbursement type"
-              onChange={handleInput}
-            />
-          </div> */}
-
           <div className="inputDiv">
             <h4 className="inputH4">Reimbursement Type</h4>
             <select
@@ -140,7 +127,7 @@ export const ReimbursementForm: React.FC<any> = (spinner: any) => {
           </div>
         </form>
 
-        {spinner ? (
+        {/* {spinner ? (
           <button
             className="submitReimburseButton"
             onClick={handleSubmitReimbursement}
@@ -149,7 +136,17 @@ export const ReimbursementForm: React.FC<any> = (spinner: any) => {
           </button>
         ) : (
           <Spinner />
-        )}
+        )} */}
+
+        <div className="submitReimburseButtons">
+          <Link to="/home">
+            <button>Back</button>
+          </Link>
+
+          <Link to="/home">
+            <button onClick={handleSubmitReimbursement}>Submit</button>
+          </Link>
+        </div>
       </div>
     </>
   );

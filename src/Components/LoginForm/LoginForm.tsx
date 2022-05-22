@@ -43,7 +43,7 @@ export const LoginForm: React.FC<any> = (spinner: any) => {
       <form className="loginForm">
         {/* for email */}
         <div className="inputDiv">
-          <h4 className="inputH4">Your Email</h4>
+          <h4 className="inputH4">Email or Username</h4>
 
           <input
             autoComplete="off"
@@ -57,7 +57,7 @@ export const LoginForm: React.FC<any> = (spinner: any) => {
 
         {/* for password */}
         <div className="inputDiv">
-          <h4 className="inputH4">Your Password</h4>
+          <h4 className="inputH4">Password</h4>
 
           <input
             autoComplete="off"

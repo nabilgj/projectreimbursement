@@ -1,4 +1,4 @@
-.pendingWrapper {
+.approveDenyWrapper {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -7,7 +7,7 @@
   /* background-color: #fff; */
 }
 
-.userDetails {
+.approveDenyDetails {
   display: flex;
   justify-content: space-around;
   align-items: center;
@@ -20,11 +20,11 @@
   margin-bottom: 2rem;
 }
 
-.pendingHeader {
+.approveDenyHeader {
   color: var(--text-white);
 }
 
-.pendingColumn {
+.approveDenyColumn {
   display: flex;
   flex-direction: column;
   align-items: space-between !important;
@@ -38,35 +38,35 @@
   width: 50%;
   margin: 10px auto;
 }
-.pendingColumn:hover {
+.approveDenyColumn:hover {
   background: var(--accent) !important;
   transition: 0.5s;
 }
 
-.pendingColumn h3 {
+.approveDenyColumn h3 {
   font-size: 1.6rem;
   text-align: center;
   margin: -8px auto;
 }
 
-.pendingColumn > p {
+.approveDenyColumn > p {
   margin: 4px 0;
 }
 
-.pendingButtons {
+.approveDenyButtons {
   display: flex;
   justify-content: center;
 
   width: 100%;
 }
 
-.pendingButtons button {
+.approveDenyButtons button {
   border-radius: 10px;
   width: 80%;
   text-align: center;
 }
 
-.pendingButtons button:hover {
+.approveDenyButtons button:hover {
   border: 1px solid var(--text-white);
   transition: 0.5s;
 }

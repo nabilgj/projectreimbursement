@@ -26,9 +26,9 @@ export const ResolvedReqPage: React.FC<any> = () => {
     <>
       <Navbar />
       <div className="resolvedWrapper">
-        <div className="userDetails">
-          <p>{userInfo?.firstName}</p>
+        <div className="resolvedDetails">
           <p>{userInfo?.role}</p>
+          <p>{userInfo?.firstName}</p>
         </div>
 
         <div className="resolvedHeader">
@@ -42,7 +42,7 @@ export const ResolvedReqPage: React.FC<any> = () => {
               className="resolvedColumn"
               style={{ color: 'white' }}
             >
-              <h3>{info.reimbursementStatus}</h3>
+              <h3 className="resolvedHThree">{info.reimbursementStatus}</h3>
               <p>Amount: ${info.amount}</p>
               <p>Description: {info.description}</p>
               <p>Type: {info.reimbursementType}</p>
@@ -50,7 +50,7 @@ export const ResolvedReqPage: React.FC<any> = () => {
           );
         })}
 
-        <div className="accountButtons">
+        <div className="resolvedButtons">
           <Link to="/home">
             <button>Back</button>
           </Link>

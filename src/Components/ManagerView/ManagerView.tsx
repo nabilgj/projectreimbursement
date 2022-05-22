@@ -55,9 +55,9 @@ export const ManagerView: React.FC<any> = () => {
   return (
     <div className="managerWrapper">
       {/* 1st row */}
-      <div className="row1">
+      <div className="managerRow1">
         <div className="managerColumn">
-          <h3 className="textHeader">View All Employees</h3>
+          <h3 className="managerTextHeader">View All Employees</h3>
 
           <Link to="/allemployees" style={{ textDecoration: 'none' }}>
             <button className="managerButton" onClick={handleViewAllEmployees}>
@@ -68,7 +68,7 @@ export const ManagerView: React.FC<any> = () => {
         </div>
 
         <div className="managerColumn">
-          <h3 className="textHeader">View All Pending Requests</h3>
+          <h3 className="managerTextHeader">View All Pending Requests</h3>
 
           <Link to="/approvedeny" style={{ textDecoration: 'none' }}>
             <button className="managerButton" onClick={handleAllPending}>
@@ -80,9 +80,9 @@ export const ManagerView: React.FC<any> = () => {
       </div>
 
       {/* 2nd row */}
-      <div className="row2">
+      <div className="managerRow2">
         <div className="managerColumn">
-          <h3 className="textHeader">View All Resolved Requests</h3>
+          <h3 className="managerTextHeader">View All Resolved Requests</h3>
 
           <Link to="/allresolved" style={{ textDecoration: 'none' }}>
             <button className="managerButton" onClick={handleAllResolved}>
@@ -93,7 +93,7 @@ export const ManagerView: React.FC<any> = () => {
         </div>
 
         <div className="managerColumn">
-          <h3 className="textHeader">Promote An Employee</h3>
+          <h3 className="managerTextHeader">Promote An Employee</h3>
 
           <Link to="/approvedeny" style={{ textDecoration: 'none' }}>
             <button className="managerButton disabled" disabled={false}>

@@ -69,21 +69,21 @@ export const EditAccount: React.FC<any> = (spinner: any) => {
 
     console.log('coming from edit account line 69 ', credentials);
     dispatch(editUser(credentials));
-    navigator('/home');
+    navigator('/viewaccount');
   };
 
   return (
     <>
       <Navbar />
-      <div className="reimburseForm">
+      <div className="editForm">
         <form className="loginForm">
           {/* for email */}
-          <div className="inputDiv">
+          <div className="editInputDiv">
             <h4 className="inputH4"> Username </h4>
 
             <input
               // autoComplete="off"
-              className="loginInput"
+              className="editLoginInput"
               type="text"
               value={username}
               name="username"
@@ -97,7 +97,7 @@ export const EditAccount: React.FC<any> = (spinner: any) => {
 
             <input
               autoComplete="off"
-              className="loginInput"
+              className="editLoginInput"
               type="text"
               value={firstName}
               name="firstname"
@@ -111,7 +111,7 @@ export const EditAccount: React.FC<any> = (spinner: any) => {
 
             <input
               autoComplete="off"
-              className="loginInput"
+              className="editLoginInput"
               type="text"
               value={lastName}
               name="lastname"
@@ -125,7 +125,7 @@ export const EditAccount: React.FC<any> = (spinner: any) => {
 
             <input
               autoComplete="off"
-              className="loginInput"
+              className="editLoginInput"
               type="text"
               value={email}
               name="email"
@@ -139,7 +139,7 @@ export const EditAccount: React.FC<any> = (spinner: any) => {
 
             <input
               autoComplete="off"
-              className="loginInput"
+              className="editLoginInput"
               type="text"
               value={password}
               name="password"
@@ -149,7 +149,7 @@ export const EditAccount: React.FC<any> = (spinner: any) => {
         </form>
 
         {spinner ? (
-          <button className="submitReimburseButton" onClick={handleEditUser}>
+          <button className="editAccountButton" onClick={handleEditUser}>
             Edit User
           </button>
         ) : (

@@ -18,8 +18,6 @@ export const HomePage: React.FC = () => {
   const userInfo = useSelector((state: RootState) => state.user);
   const dispatch: AppDispatch = useDispatch();
 
-  console.log('coming from line 20 to see role ', userInfo);
-
   const navigator = useNavigate();
 
   useEffect(() => {
