@@ -69,7 +69,7 @@ export const Navbar: React.FC = () => {
           <Link
             to={
               user?.role === 'FinanceManager'
-                ? '/login'
+                ? '/approvedeny'
                 : '/submitreimbursement'
             }
             className={
@@ -78,22 +78,24 @@ export const Navbar: React.FC = () => {
                 : 'eNavLink navLink'
             }
           >
-            {user?.role === 'FinanceManager'
-              ? 'See Reimbursements'
-              : 'Submit Reimbursements'}
+            {user?.role === 'FinanceManager' ? 'All Pending' : 'Submit'}
           </Link>
         </li>
 
         <li className="navItem">
           <Link
-            to={user?.role === 'FinanceManager' ? '/login' : '/resolvedrequest'}
+            to={
+              user?.role === 'FinanceManager'
+                ? '/allresolved'
+                : '/resolvedrequest'
+            }
             className={
               user?.role === 'FinanceManager'
                 ? 'mNavLink navLink'
                 : 'eNavLink navLink'
             }
           >
-            {user?.role === 'FinanceManager' ? 'All Requests' : 'All Request'}
+            {user?.role === 'FinanceManager' ? 'All Resolved' : 'All Resolved'}
           </Link>
         </li>
 
