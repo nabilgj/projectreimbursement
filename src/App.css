@@ -6,16 +6,9 @@
   --text-white: #fbfbfb;
 }
 
-body {
-  background-color: var(--bg);
-}
-
 .app {
   height: 100%;
   width: 100%;
-
-  /* width: fit-content;
-  height: fit-content; */
 
   display: flex;
   justify-content: center;

@@ -61,19 +61,17 @@ export const ViewIndividualEmployee: React.FC<any> = () => {
         ) : (
           employees?.map((emp) => {
             return (
-              <Link
-                to={`/allemployees/${emp.id}`}
+              <div
+                style={{ color: 'white' }}
                 className="employeeColumn"
                 key={emp.id}
               >
-                <div style={{ color: 'white' }}>
-                  <p>Amount ${emp.amount}</p>
-                  <p>Description: {emp.description}</p>
-                  <p>Status: {emp.reimbursementStatus}</p>
-                  <p>Type: {emp.reimbursementType}</p>
-                  <p>Resolver: {emp.reimbursementResolverId}</p>
-                </div>
-              </Link>
+                <p>Amount ${emp.amount}</p>
+                <p>Description: {emp.description}</p>
+                <p>Status: {emp.reimbursementStatus}</p>
+                <p>Type: {emp.reimbursementType}</p>
+                <p>Resolver: {emp.reimbursementResolverId}</p>
+              </div>
             );
           })
         )}

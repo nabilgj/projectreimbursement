@@ -30,10 +30,16 @@ export const HomePage: React.FC = () => {
   return (
     <>
       <Navbar />
-      <h2 className="userInfo">
-        {userInfo.user?.role === 'FinanceManager' ? 'Manager: ' : 'Employee: '}{' '}
-        {userInfo.user?.firstName}{' '}
-      </h2>
+      <div className="userInfo">
+        <h3>
+          {userInfo.user?.role === 'FinanceManager'
+            ? 'Manager: '
+            : 'Employee: '}{' '}
+          {userInfo.user?.firstName}{' '}
+        </h3>
+
+        <h3>Expense Reimbursment System</h3>
+      </div>
 
       {/* {checkForContent} */}
 

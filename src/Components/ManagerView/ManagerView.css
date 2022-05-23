@@ -8,21 +8,31 @@
   flex-wrap: wrap;
   justify-content: center;
 
-  margin: 20px auto;
+  margin: 1.8rem auto;
   padding: auto 8px;
-  height: 200px;
-  width: 891px;
+
+  height: 220px;
+  width: 80%;
+
+  /* background-color: #fff; */
 }
 
 @media only screen and (max-width: 891px) {
   .managerRow1 {
     flex-direction: column;
     flex-wrap: nowrap;
-    width: auto;
     justify-content: center;
 
-    margin: 0 auto;
-    padding: 16px;
+    margin: 2rem auto;
+    padding: 6px;
+    height: auto;
+    width: 576px;
+  }
+}
+@media only screen and (max-width: 601px) {
+  .managerRow1 {
+    height: auto;
+    width: 476px;
   }
 }
 
@@ -31,10 +41,12 @@
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: center;
-  margin: 20px auto;
+
+  margin: 1.8rem auto;
   padding: auto 8px;
-  height: 200px;
-  width: 891px;
+
+  height: 220px;
+  width: 80%;
 }
 
 @media only screen and (max-width: 891px) {
@@ -44,13 +56,36 @@
     width: auto;
     justify-content: center;
 
-    margin: 0 auto;
-    padding: 16px;
+    margin: 2rem auto;
+    padding: 12px;
+
+    height: auto;
+    width: 576px;
+  }
+}
+
+@media only screen and (max-width: 601px) {
+  .managerRow2 {
+    height: auto;
+    width: 476px;
   }
 }
 
 .managerTextHeader {
   text-align: center;
+  font-size: 1.2rem;
+}
+
+@media only screen and (max-width: 891px) {
+  .managerTextHeader {
+    font-size: 1rem;
+  }
+}
+
+@media only screen and (max-width: 601px) {
+  .managerTextHeader {
+    font-size: 0.8rem;
+  }
 }
 
 .managerColumn {
@@ -62,7 +97,7 @@
 
   flex: 1;
   flex-wrap: wrap;
-  margin: 10px;
+  margin: 0 16px;
 
   border: 1px solid var(--accent);
   border-radius: 10px;
@@ -74,7 +109,17 @@
   .managerColumn {
     flex-wrap: nowrap;
 
-    padding: auto;
+    padding: 6px;
+    margin: 1rem auto;
+    width: 100%;
+  }
+}
+
+@media only screen and (max-width: 601px) {
+  .managerColumn {
+    padding: 6px;
+    margin: 1rem auto;
+    width: 100%;
   }
 }
 
@@ -120,8 +165,18 @@
   transform: scale(1);
 }
 
-@media only screen and (max-width: 991px) {
+@media only screen and (max-width: 891px) {
   .managerButton {
-    /* margin-bottom: 16px !important; */
+    margin-bottom: 20px;
+    padding: 10px;
+    font-size: 0.8rem;
+  }
+}
+
+@media only screen and (max-width: 601px) {
+  .managerButton {
+    margin-bottom: 20px;
+    padding: 10px;
+    font-size: 0.8rem;
   }
 }
