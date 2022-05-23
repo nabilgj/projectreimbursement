@@ -10,21 +10,29 @@ import { RootState, AppDispatch } from '../../store';
 
 import { Navbar } from '../../Components/Navbar/Navbar';
 
-import { getRequestResolved } from '../../slices/ManagerSlice';
+import {
+  getRequestResolved,
+  getAllUsers,
+  getAllPending,
+} from '../../slices/ManagerSlice';
 
 // go inside App for routing
 export const ViewApproveDeny: React.FC<any> = () => {
-  // const [reimburseId, setReimburseId] = useState(1);
-
   const pendingAll = useSelector(
     (state: RootState) => state.manager.pendingReimbursements
   );
-  console.log('coming from ViewApproveDeny line 20 ', pendingAll);
+
+  const usersAll = useSelector((state: RootState) => state.manager.allUsers);
+
+  console.log('coming from line 25 ViewApproveDeny ', usersAll);
+  console.log('coming from line 26 ViewApproveDeny ', pendingAll);
+
+  // let authorId = usersAll?.find((id) => id ===  )
 
   const navigator = useNavigate();
 
   // let reversePending = pendingInfo?.reverse();
-  const userInfo = useSelector((state: RootState) => state.user.user);
+  const managerInfo = useSelector((state: RootState) => state.user.user);
 
   const dispatch: AppDispatch = useDispatch();
 
@@ -34,8 +42,8 @@ export const ViewApproveDeny: React.FC<any> = () => {
       status: 2,
     };
 
-    console.log('Approved');
     dispatch(getRequestResolved(credentials));
+
     navigator('/home');
   };
 
@@ -45,51 +53,52 @@ export const ViewApproveDeny: React.FC<any> = () => {
       status: 3,
     };
 
-    console.log('Denied');
     dispatch(getRequestResolved(credentials));
     navigator('/home');
   };
 
-  useEffect(() => {}, [pendingAll]);
+  // useEffect(() => {
+  //   // dispatch(getAllUsers());
+  // }, [pendingAll]);
 
   return (
     <>
       <Navbar />
       <div className="approveDenyWrapper">
         <div className="approveDenyDetails">
-          <p>{userInfo?.role}</p>
-          <p>{userInfo?.firstName}</p>
-        </div>
-        <div className="approveDenyHeader">
-          <h3>All Pending Requests</h3>
+          <p>{managerInfo?.role}</p>
+          <p>{managerInfo?.firstName}</p>
         </div>
 
-        {pendingAll?.map((pendingA) => {
-          return (
-            <div
-              key={pendingA.id}
-              className="approveDenyColumn"
-              style={{ color: 'white' }}
-            >
-              <p>Amount: ${pendingA.amount}</p>
-              <p>Description: {pendingA.description}</p>
-              <p>Status: {pendingA.reimbursementStatus}</p>
-              <p>Type: {pendingA.reimbursementType}</p>
+        {pendingAll?.length! <= 0 ? (
+          <h3 className="approveDenyHeader">No Pending Request</h3>
+        ) : (
+          pendingAll?.map((pendingA) => {
+            return (
+              <div
+                key={pendingA.id}
+                className="approveDenyColumn"
+                style={{ color: 'white' }}
+              >
+                <p>AuthorId: {pendingA.reimbursementAuthorId}</p>
+                <p>Amount: ${pendingA.amount}</p>
+                <p>Description: {pendingA.description}</p>
+                <p>Status: {pendingA.reimbursementStatus}</p>
+                <p>Type: {pendingA.reimbursementType}</p>
 
-              <div className="approveDenyButtons">
-                {/* <Link to="/home">
+                <div className="approveDenyButtons">
+                  <button onClick={() => handleApproved(pendingA.id!)}>
+                    Approve
+                  </button>
 
-                </Link> */}
-
-                <button onClick={() => handleApproved(pendingA.id!)}>
-                  Approve
-                </button>
-
-                <button onClick={() => handleDenied(pendingA.id!)}>Deny</button>
+                  <button onClick={() => handleDenied(pendingA.id!)}>
+                    Deny
+                  </button>
+                </div>
               </div>
-            </div>
-          );
-        })}
+            );
+          })
+        )}
 
         <div className="employeeButtons">
           <Link to="/home">

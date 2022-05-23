@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import './LoginForm.css';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 import { useDispatch } from 'react-redux';
 import { toggleError, loginUser } from '../../slices/UserSlice';
@@ -29,6 +31,15 @@ export const LoginForm: React.FC<any> = (spinner: any) => {
       password: password,
     };
 
+    toast('Username/password incorrect', {
+      position: 'top-center',
+      autoClose: 3000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+    });
     dispatch(loginUser(credentials));
   };
 
@@ -36,7 +47,7 @@ export const LoginForm: React.FC<any> = (spinner: any) => {
     <div className="login">
       {/* text container */}
       <div className="textContainer">
-        <h1 className="loginHeader">Welcome to Reimbursements</h1>
+        <h1 className="loginHeader">Revature Reimbursements</h1>
         {/* <h2 className="login-header">Sign in to view your reimbursements</h2> */}
       </div>
 
@@ -70,13 +81,31 @@ export const LoginForm: React.FC<any> = (spinner: any) => {
         </div>
       </form>
 
-      {spinner ? (
+      {/* {spinner ? (
         <button className="loginButton" onClick={handleLogin}>
           login
         </button>
       ) : (
         <Spinner />
-      )}
+      )} */}
+
+      <button className="loginButton" onClick={handleLogin}>
+        login
+      </button>
+
+      <ToastContainer
+        position="top-center"
+        autoClose={3000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="dark"
+        progressStyle={{ color: '#23ce6b' }}
+      />
     </div>
   );
 };

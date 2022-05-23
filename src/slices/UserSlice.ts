@@ -29,16 +29,15 @@ type Login = {
   password: string;
 };
 
+let res: any;
+
 // being called from Login Button inside LoginForm
 export const loginUser = createAsyncThunk(
   'user/login',
   async (credentials: Login, thunkAPI) => {
     try {
       axios.defaults.withCredentials = true;
-      const res = await axios.post(
-        'http://localhost:8000/users/login',
-        credentials
-      );
+      res = await axios.post('http://localhost:8000/users/login', credentials);
       console.log('coming from loginUser line 42 ', res.data);
 
       return {
@@ -96,18 +95,6 @@ export const editUser = createAsyncThunk(
   }
 );
 
-// being called from Login Button inside LoginForm
-// export const userInfo = createAsyncThunk('user/userInfo', async (thunkAPI) => {
-//   try {
-//     axios.defaults.withCredentials = true;
-//     const res = await axios.get('http://localhost:8000/users/myInfo');
-//     console.log('coming from lginUser async api call line 68 ', res.data);
-
-//   } catch (e) {
-//     console.log(e);
-//   }
-// });
-
 let response: any;
 
 // being called from Logout Button inside Navbar
@@ -146,6 +133,31 @@ export const getUserDetailsForManager = createAsyncThunk(
     }
   }
 );
+
+// being called from Manager View
+// export const getVerifyLogin = createAsyncThunk(
+//   'users/verifylogin',
+//   async (thunkAPI) => {
+//     try {
+//       res = await axios.get('http://localhost:8000/users/verifyLogin');
+
+//       console.log('coming from line 144 ', res.data);
+
+//       return {
+//         user_id: res.data.user_id,
+//         username: res.data.username,
+//         email: res.data.email,
+//         password: res.data.password,
+//         firstName: res.data.firstName,
+//         lastName: res.data.lastName,
+//         role: res.data.role,
+//         role_id: res.data.role_id,
+//       };
+//     } catch (e) {
+//       console.log('something went wrong!');
+//     }
+//   }
+// );
 
 // ================= reducer actions ========================
 // create slice and will be exported as default
@@ -198,6 +210,10 @@ export const UserSlice = createSlice({
       state.loading = false;
       state.currentProfile = action.payload;
     });
+    builder.addCase(getUserDetailsForManager.rejected, (state, action) => {
+      state.error = true;
+      state.loading = false;
+    });
 
     builder.addCase(logoutUser.pending, (state, action) => {
       state.loading = true;
@@ -207,6 +223,23 @@ export const UserSlice = createSlice({
       state.loading = false;
       state.user = undefined;
     });
+    builder.addCase(logoutUser.rejected, (state, action) => {
+      state.error = true;
+      state.loading = false;
+    });
+
+    // builder.addCase(getVerifyLogin.pending, (state, action) => {
+    //   state.loading = true;
+    // });
+
+    // builder.addCase(getVerifyLogin.fulfilled, (state, action) => {
+    //   state.loading = false;
+    //   state.user = res.data;
+    // });
+    // builder.addCase(getVerifyLogin.rejected, (state, action) => {
+    //   state.error = true;
+    //   state.loading = false;
+    // });
   },
 });
 

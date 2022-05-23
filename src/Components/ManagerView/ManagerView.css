@@ -1,22 +1,52 @@
 .managerWrapper {
-  margin: 16px;
+  margin: 8px;
 }
 
 .managerRow1 {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  /* align-items: center; */
-  margin: 20px 0;
+  justify-content: center;
+
+  margin: 20px auto;
+  padding: auto 8px;
   height: 200px;
+  width: 891px;
+}
+
+@media only screen and (max-width: 891px) {
+  .managerRow1 {
+    flex-direction: column;
+    flex-wrap: nowrap;
+    width: auto;
+    justify-content: center;
+
+    margin: 0 auto;
+    padding: 16px;
+  }
 }
 
 .managerRow2 {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  margin: 20px 0;
+  justify-content: center;
+  margin: 20px auto;
+  padding: auto 8px;
   height: 200px;
+  width: 891px;
+}
+
+@media only screen and (max-width: 891px) {
+  .managerRow2 {
+    flex-direction: column;
+    flex-wrap: nowrap;
+    width: auto;
+    justify-content: center;
+
+    margin: 0 auto;
+    padding: 16px;
+  }
 }
 
 .managerTextHeader {
@@ -32,12 +62,20 @@
 
   flex: 1;
   flex-wrap: wrap;
-  margin: 0 10px;
+  margin: 10px;
 
   border: 1px solid var(--accent);
   border-radius: 10px;
   background: transparent;
   color: var(--text-white);
+}
+
+@media only screen and (max-width: 891px) {
+  .managerColumn {
+    flex-wrap: nowrap;
+
+    padding: auto;
+  }
 }
 
 .managerButton {
@@ -80,4 +118,10 @@
 
 .managerButton.disabled:hover {
   transform: scale(1);
+}
+
+@media only screen and (max-width: 991px) {
+  .managerButton {
+    /* margin-bottom: 16px !important; */
+  }
 }

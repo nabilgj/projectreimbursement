@@ -44,7 +44,6 @@ export const getAllUsers = createAsyncThunk(
     try {
       axios.defaults.withCredentials = true;
       res = await axios.get('http://localhost:8000/users/getAllUsers');
-      console.log('coming from getAllUsers async api call line 46 ', res.data);
 
       return {
         userId: res.data.user_id,
@@ -65,14 +64,12 @@ let res: any;
 export const getAllPending = createAsyncThunk(
   'manager/allPending',
   async (thunkAPI) => {
-    // user = useSelector((state: RootState) => state.user);
-    // console.log('all users from getAllPending async api call line 62 ', user);
-
     try {
       axios.defaults.withCredentials = true;
       res = await axios.get(
         'http://localhost:8000/reimbursements/getAllPending'
       );
+      console.log('coming from getAllPending line 72 ', res.data);
     } catch (e) {
       console.log(e);
     }
@@ -113,7 +110,7 @@ export const getRequestResolved = createAsyncThunk(
         'http://localhost:8000/reimbursements/resolveRequest',
         credentials
       );
-      console.log('coming from editUser async api call line 139 ', res.data);
+      console.log('coming from editUser async api call line 113 ', res.data);
     } catch (e) {
       return thunkAPI.rejectWithValue('something went wrong');
     }

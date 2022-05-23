@@ -1,10 +1,12 @@
-/* :root {
+:root {
   --bg: #000;
   --grey: #2d2e2e;
   --btn-blue: #3891a6;
   --accent: #23ce6b;
   --text-white: #fbfbfb;
-} */
+  --toastify-color-dark: #000;
+  --toastify-color-progress-dark: #3891a6;
+}
 
 .login {
   width: fit-content;
@@ -17,8 +19,12 @@
   justify-content: center;
 
   border-radius: 5px;
-  border: 2px solid var(--grey);
+  border: 1px solid var(--grey);
   padding: 20px;
+}
+.login:hover {
+  border: 1px solid var(--accent);
+  transition: 5s;
 }
 
 .loginHeader {
@@ -26,9 +32,6 @@
   text-align: center;
   color: var(--text-white);
   font-size: 1.5rem;
-}
-
-.loginForm {
 }
 
 .inputDiv:not('last') {
@@ -67,7 +70,7 @@
   color: var(--text-white);
   width: 100%;
   height: 40px;
-  border: 1px solid var(--bg);
+  border: 1px solid var(--grey);
   border-radius: 10px;
   margin-top: 20px;
   padding: auto;
@@ -78,7 +81,10 @@
 }
 
 .loginButton:hover {
-  transform: scale(0.95);
+  transform: scale(0.98);
   transition: 0.5s;
   background-color: var(--accent);
+}
+
+.Toastify__progress-bar-theme--dark {
 }

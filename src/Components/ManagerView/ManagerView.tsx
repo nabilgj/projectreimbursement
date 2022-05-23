@@ -3,8 +3,8 @@ import './ManagerView.css';
 
 import { Link, useNavigate } from 'react-router-dom';
 
-import { useDispatch } from 'react-redux';
-import { AppDispatch } from '../../store';
+import { useDispatch, useSelector } from 'react-redux';
+import { AppDispatch, RootState } from '../../store';
 import {
   getAllPending,
   getAllUsers,
@@ -13,6 +13,8 @@ import {
 
 // go inside HomePage
 export const ManagerView: React.FC<any> = () => {
+  const userInfo = useSelector((state: RootState) => state.user);
+
   const dispatch: AppDispatch = useDispatch();
   const navigator = useNavigate();
 
@@ -45,19 +47,14 @@ export const ManagerView: React.FC<any> = () => {
     navigator('/approvedeny');
   };
 
-  // useEffect(() => {
-  //   const handleApproveDeny = (event: React.MouseEvent<HTMLButtonElement>) => {
-  //     dispatch(getAllPending());
-  //     navigator('/approvedeny');
-  //   };
-  // }, []);
+  useEffect(() => {}, []);
 
   return (
     <div className="managerWrapper">
       {/* 1st row */}
       <div className="managerRow1">
         <div className="managerColumn">
-          <h3 className="managerTextHeader">View All Employees</h3>
+          <h3 className="managerTextHeader">View All Revature Employees</h3>
 
           <Link to="/allemployees" style={{ textDecoration: 'none' }}>
             <button className="managerButton" onClick={handleViewAllEmployees}>
