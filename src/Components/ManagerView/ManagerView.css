@@ -112,8 +112,8 @@
   cursor: not-allowed;
   background-color: transparent !important;
   font-weight: 100;
-  border: 1px solid var(--accent) !important;
-  color: var(--grey) !important;
+  border: 1px solid var(--grey) !important;
+  color: var(--text-white) !important;
 }
 
 .managerButton.disabled:hover {

@@ -1,9 +1,9 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import './ViewIndividualEmployee.css';
 
 import { IReimbursement } from '../../interfaces/IReimbursement';
 
-import { Link } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 
 import { RootState, AppDispatch } from '../../store';
@@ -15,7 +15,13 @@ import { useNavigate } from 'react-router-dom';
 
 // go inside App for routing
 export const ViewIndividualEmployee: React.FC<any> = () => {
-  const emp = useSelector((state: RootState) => state.manager.indEmployee);
+  const [userName, setUserName] = useState('');
+
+  const employees = useSelector(
+    (state: RootState) => state.manager.indEmployee
+  );
+
+  const queryParams = new URLSearchParams(window.location.search);
 
   // let reversePending = pendingInfo?.reverse();
   const userInfo = useSelector((state: RootState) => state.user.user);
@@ -29,6 +35,10 @@ export const ViewIndividualEmployee: React.FC<any> = () => {
     navigator('/home');
   };
 
+  useEffect(() => {
+    setUserName(queryParams.get('user')!);
+  }, [userName]);
+
   return (
     <>
       <Navbar />
@@ -37,11 +47,37 @@ export const ViewIndividualEmployee: React.FC<any> = () => {
           <p>{userInfo?.role}</p>
           <p>{userInfo?.firstName}</p>
         </div>
-        <div className="employeeHeader">
-          <h3>All Employees</h3>
+
+        <div>
+          <h3 className="employeeHeader">
+            {employees?.length! > 0 ? `${userName} Requests` : null}
+          </h3>
         </div>
 
-        {emp?.map((emp) => {
+        {employees?.length! <= 0 ? (
+          <h3 className="employeeHeader">
+            {userName} has not submitted any reimbursement!
+          </h3>
+        ) : (
+          employees?.map((emp) => {
+            return (
+              <Link
+                to={`/allemployees/${emp.id}`}
+                className="employeeColumn"
+                key={emp.id}
+              >
+                <div style={{ color: 'white' }}>
+                  <p>Amount ${emp.amount}</p>
+                  <p>Description: {emp.description}</p>
+                  <p>Status: {emp.reimbursementStatus}</p>
+                  <p>Type: {emp.reimbursementType}</p>
+                  <p>Resolver: {emp.reimbursementResolverId}</p>
+                </div>
+              </Link>
+            );
+          })
+        )}
+        {/* {emp?.map((emp) => {
           return (
             <Link
               to={`/allemployees/${emp.id}`}
@@ -57,7 +93,7 @@ export const ViewIndividualEmployee: React.FC<any> = () => {
               </div>
             </Link>
           );
-        })}
+        })} */}
 
         <div className="employeeButtons">
           <Link to="/allemployees">

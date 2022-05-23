@@ -35,20 +35,24 @@ export const ResolvedReqPage: React.FC<any> = () => {
           <h3>All Resolved Requests</h3>
         </div>
 
-        {resolvedInfo?.map((info) => {
-          return (
-            <div
-              key={info.id}
-              className="resolvedColumn"
-              style={{ color: 'white' }}
-            >
-              <h3 className="resolvedHThree">{info.reimbursementStatus}</h3>
-              <p>Amount: ${info.amount}</p>
-              <p>Description: {info.description}</p>
-              <p>Type: {info.reimbursementType}</p>
-            </div>
-          );
-        })}
+        {resolvedInfo?.length! <= 0 ? (
+          <h3>Nope! no request resolved.</h3>
+        ) : (
+          resolvedInfo?.map((info) => {
+            return (
+              <div
+                key={info.id}
+                className="resolvedColumn"
+                style={{ color: 'white' }}
+              >
+                <h3 className="resolvedHThree">{info.reimbursementStatus}</h3>
+                <p>Amount: ${info.amount}</p>
+                <p>Description: {info.description}</p>
+                <p>Type: {info.reimbursementType}</p>
+              </div>
+            );
+          })
+        )}
 
         <div className="resolvedButtons">
           <Link to="/home">

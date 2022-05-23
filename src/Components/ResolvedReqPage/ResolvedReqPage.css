@@ -5,6 +5,8 @@
   margin: 20px auto;
   width: 90%;
   /* background-color: #fff; */
+
+  z-index: 2;
 }
 
 .resolvedDetails {
