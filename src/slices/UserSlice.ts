@@ -227,19 +227,6 @@ export const UserSlice = createSlice({
       state.error = true;
       state.loading = false;
     });
-
-    // builder.addCase(getVerifyLogin.pending, (state, action) => {
-    //   state.loading = true;
-    // });
-
-    // builder.addCase(getVerifyLogin.fulfilled, (state, action) => {
-    //   state.loading = false;
-    //   state.user = res.data;
-    // });
-    // builder.addCase(getVerifyLogin.rejected, (state, action) => {
-    //   state.error = true;
-    //   state.loading = false;
-    // });
   },
 });
 
