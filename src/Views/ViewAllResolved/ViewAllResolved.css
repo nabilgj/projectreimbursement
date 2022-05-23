@@ -27,7 +27,7 @@
 
 .allResolvedColumn {
   display: flex;
-  flex-direction: column;
+  flex-direction: column-reverse;
   align-items: space-between !important;
 
   border: 1px solid var(--accent) !important;

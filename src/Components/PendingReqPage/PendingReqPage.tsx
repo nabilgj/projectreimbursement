@@ -54,7 +54,7 @@ export const PendingReqPage: React.FC<any> = () => {
                 style={{ color: 'white' }}
               >
                 {/* <h3>{info.reimbursementStatus}</h3> */}
-                <p>Amount: {info.amount}</p>
+                <p>Amount: ${info.amount}</p>
                 <p>Description: {info.description}</p>
                 <p>Type: {info.reimbursementType}</p>
               </div>
