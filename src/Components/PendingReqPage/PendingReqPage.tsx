@@ -22,10 +22,7 @@ export const PendingReqPage: React.FC<any> = () => {
 
   const dispatch: AppDispatch = useDispatch();
 
-  useEffect(() => {
-    // dispatch(getAllPendingByUser());
-    console.log(typeof pendingInfo);
-  }, [pendingInfo]);
+  useEffect(() => {}, [pendingInfo]);
 
   return (
     <>

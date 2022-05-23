@@ -38,7 +38,6 @@ export const loginUser = createAsyncThunk(
     try {
       axios.defaults.withCredentials = true;
       res = await axios.post('http://localhost:8000/users/login', credentials);
-      console.log('coming from loginUser line 42 ', res.data);
 
       return {
         user_id: res.data.user_id,
@@ -77,7 +76,6 @@ export const editUser = createAsyncThunk(
         'http://localhost:8000/users/update',
         credentials
       );
-      // console.log('coming from editUser async api call line 79 ', res.data);
 
       return {
         user_id: res.data.user_id,
@@ -102,7 +100,6 @@ export const logoutUser = createAsyncThunk('user/logout', async (thunkAPI) => {
   try {
     axios.defaults.withCredentials = true;
     response = await axios.delete('http://localhost:8000/users/logout');
-    console.log('coming from logoutUser async api call line 67');
   } catch (e) {
     console.log('something went wrong');
   }
@@ -116,8 +113,6 @@ export const getUserDetailsForManager = createAsyncThunk(
       const res = await axios.get(
         `http://localhost:8000/reimbursements/getAllRequestsByEmployee/${id}`
       );
-
-      console.log('coming from line 66 ', res);
 
       return {
         user_id: res.data.user_id,
@@ -133,31 +128,6 @@ export const getUserDetailsForManager = createAsyncThunk(
     }
   }
 );
-
-// being called from Manager View
-// export const getVerifyLogin = createAsyncThunk(
-//   'users/verifylogin',
-//   async (thunkAPI) => {
-//     try {
-//       res = await axios.get('http://localhost:8000/users/verifyLogin');
-
-//       console.log('coming from line 144 ', res.data);
-
-//       return {
-//         user_id: res.data.user_id,
-//         username: res.data.username,
-//         email: res.data.email,
-//         password: res.data.password,
-//         firstName: res.data.firstName,
-//         lastName: res.data.lastName,
-//         role: res.data.role,
-//         role_id: res.data.role_id,
-//       };
-//     } catch (e) {
-//       console.log('something went wrong!');
-//     }
-//   }
-// );
 
 // ================= reducer actions ========================
 // create slice and will be exported as default

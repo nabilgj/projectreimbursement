@@ -25,7 +25,6 @@ export const ViewAllEmployyes: React.FC<any> = () => {
   const dispatch: AppDispatch = useDispatch();
 
   const handleGetIndividualEmployee = (id: number) => {
-    console.log('handleGetIndividualEmployee');
     dispatch(getSingleEmployeeRequests(id));
   };
 

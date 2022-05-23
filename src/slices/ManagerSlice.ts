@@ -69,7 +69,6 @@ export const getAllPending = createAsyncThunk(
       res = await axios.get(
         'http://localhost:8000/reimbursements/getAllPending'
       );
-      console.log('coming from getAllPending line 72 ', res.data);
     } catch (e) {
       console.log(e);
     }
@@ -84,10 +83,6 @@ export const getAllResolved = createAsyncThunk(
       axios.defaults.withCredentials = true;
       res = await axios.get(
         'http://localhost:8000/reimbursements/getAllResolved'
-      );
-      console.log(
-        'coming from getAllResolved async api call line 106 ',
-        res.data
       );
     } catch (e) {
       console.log(e);
@@ -110,7 +105,6 @@ export const getRequestResolved = createAsyncThunk(
         'http://localhost:8000/reimbursements/resolveRequest',
         credentials
       );
-      console.log('coming from editUser async api call line 113 ', res.data);
     } catch (e) {
       return thunkAPI.rejectWithValue('something went wrong');
     }
@@ -130,7 +124,6 @@ export const getSingleEmployeeRequests = createAsyncThunk(
       res = await axios.get(
         `http://localhost:8000/reimbursements/getAllRequestsByEmployee/${id}`
       );
-      console.log('coming from editUser async api call line 131 ', res.data);
     } catch (e) {
       return thunkAPI.rejectWithValue('something went wrong');
     }

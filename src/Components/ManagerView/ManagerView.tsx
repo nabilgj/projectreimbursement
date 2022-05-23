@@ -23,29 +23,23 @@ export const ManagerView: React.FC<any> = () => {
     event: React.MouseEvent<HTMLButtonElement>
   ) => {
     dispatch(getAllUsers());
-    console.log('coming handleViewAllEmployees click button');
-    // navigator('/allemployees');
   };
 
   // click handler for approve deny
   const handleAllPending = (event: React.MouseEvent<HTMLButtonElement>) => {
     dispatch(getAllPending());
-    console.log('coming handleApproveDeny click button');
-    // navigator('/approvedeny');
   };
 
   // click handler for approve deny
   const handleAllResolved = (event: React.MouseEvent<HTMLButtonElement>) => {
     dispatch(getAllResolved());
-    console.log('coming handleApproveDeny click button');
   };
 
   // click handler for approve deny
-  const handleApproveDeny = (event: React.MouseEvent<HTMLButtonElement>) => {
-    // dispatch(getAllPending());
-    console.log('coming handleApproveDeny click button');
-    navigator('/approvedeny');
-  };
+  // const handleApproveDeny = (event: React.MouseEvent<HTMLButtonElement>) => {
+  //   // dispatch(getAllPending());
+  //   navigator('/approvedeny');
+  // };
 
   useEffect(() => {}, []);
 

@@ -25,16 +25,7 @@ export const ReimbursementForm: React.FC<any> = (spinner: any) => {
   const dispatch: AppDispatch = useDispatch();
   const [pendingInfo, setPendingInfo] = useState([]);
 
-  useEffect(() => {
-    // console.log(
-    //   'coming from form line joseph is a manager ',
-    //   reimburseInfo.allPending
-    // );
-    console.log(
-      'coming from form may 19, 2022, line 38 ',
-      reimburseInfo.reimbursement
-    );
-  }, [reimburseInfo]);
+  useEffect(() => {}, [reimburseInfo]);
 
   // input change handler
   const handleInput = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -126,17 +117,6 @@ export const ReimbursementForm: React.FC<any> = (spinner: any) => {
             </select>
           </div>
         </form>
-
-        {/* {spinner ? (
-          <button
-            className="submitReimburseButton"
-            onClick={handleSubmitReimbursement}
-          >
-            Submit Reimbursement
-          </button>
-        ) : (
-          <Spinner />
-        )} */}
 
         <div className="submitReimburseButtons">
           <Link to="/home">

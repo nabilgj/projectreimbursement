@@ -22,11 +22,6 @@ export const ViewAllResolved: React.FC<any> = () => {
 
   const dispatch: AppDispatch = useDispatch();
 
-  // useEffect(() => {
-  //   // dispatch(getAllPendingByUser());
-  //   console.log(typeof resolvedInfo);
-  // }, [resolvedInfo]);
-
   return (
     <>
       <Navbar />

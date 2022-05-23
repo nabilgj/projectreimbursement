@@ -15,7 +15,6 @@ import { parse } from 'path';
 // go inside App
 export const ProfilePage: React.FC = () => {
   const { id } = useParams();
-  console.log('coming from profilepage line 16', typeof id);
 
   const profile = useSelector((state: RootState) => state.user);
 
@@ -25,8 +24,6 @@ export const ProfilePage: React.FC = () => {
     if (id && !profile.currentProfile) {
       dispatch(getUserDetailsForManager(id));
     }
-
-    console.log('current app state from line 29 ', profile);
   }, [profile]);
 
   return (

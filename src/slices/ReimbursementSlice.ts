@@ -42,7 +42,6 @@ export const submitReimbursement = createAsyncThunk(
         'http://localhost:8000/reimbursements/createRequest',
         rDetails
       );
-      console.log('coming from lginUser async api call line 48 ', res.data);
 
       return {
         amount: res.data.amount,
@@ -65,11 +64,6 @@ export const getAllPendingByUser = createAsyncThunk(
       axios.defaults.withCredentials = true;
       res = await axios.get(
         'http://localhost:8000/reimbursements/getAllPendingByUser'
-      );
-
-      console.log(
-        'coming from getAllPendingByUser async api call line 73',
-        res.data
       );
 
       return {
@@ -95,20 +89,6 @@ export const getAllResolvedByUser = createAsyncThunk(
       res = await axios.get(
         'http://localhost:8000/reimbursements/getAllResolvedByUser'
       );
-
-      console.log(
-        'coming from getAllResolvedByUser async api call line 102',
-        res.data
-      );
-
-      // return {
-      //   reqId: res.data.user_id,
-      //   username: res.data.username,
-      //   email: res.data.email,
-      //   firstName: res.data.firstName,
-      //   lastName: res.data.lastName,
-      //   role: res.data.role,
-      // };
     } catch (e) {
       console.log(e);
     }

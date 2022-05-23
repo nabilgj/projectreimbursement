@@ -24,9 +24,6 @@ export const ViewApproveDeny: React.FC<any> = () => {
 
   const usersAll = useSelector((state: RootState) => state.manager.allUsers);
 
-  console.log('coming from line 25 ViewApproveDeny ', usersAll);
-  console.log('coming from line 26 ViewApproveDeny ', pendingAll);
-
   // let authorId = usersAll?.find((id) => id ===  )
 
   const navigator = useNavigate();

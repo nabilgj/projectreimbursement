@@ -24,8 +24,6 @@ export const EditAccount: React.FC<any> = (spinner: any) => {
 
   const navigator = useNavigate();
 
-  console.log('coming from EditAccount line 27 ', userInfo);
-
   const dispatch: AppDispatch = useDispatch();
 
   useEffect(() => {}, []);
@@ -67,7 +65,6 @@ export const EditAccount: React.FC<any> = (spinner: any) => {
       role_id: roleId,
     };
 
-    console.log('coming from edit account line 69 ', credentials);
     dispatch(editUser(credentials));
     navigator('/viewaccount');
   };
