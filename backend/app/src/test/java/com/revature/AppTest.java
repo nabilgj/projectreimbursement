@@ -8,7 +8,7 @@ import static org.junit.Assert.*;
 
 public class AppTest {
     @Test public void appHasAGreeting() {
-        App classUnderTest = new App();
+        Driver classUnderTest = new Driver();
         assertNotNull("app should have a greeting", classUnderTest.getGreeting());
     }
 }
