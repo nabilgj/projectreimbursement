@@ -1,0 +1,4 @@
+2022-05-26 15:00:44 WARN  LoggingUtil:29 - User login attempt failed
+2022-05-26 15:00:44 INFO  LoggingUtil:22 - User myusername has registered an account
+2022-05-26 15:00:44 WARN  LoggingUtil:29 - User login attempt failed
+2022-05-26 15:00:44 INFO  LoggingUtil:32 - User username123 was logged in
