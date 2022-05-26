@@ -31,12 +31,12 @@ export const ResolvedReqPage: React.FC<any> = () => {
           <p>{userInfo?.firstName}</p>
         </div>
 
-        <div className="resolvedHeader">
+        {/* <div className="resolvedHeader">
           <h3>All Resolved Requests</h3>
-        </div>
+        </div> */}
 
         {resolvedInfo?.length! <= 0 ? (
-          <h3>Nope! no request resolved.</h3>
+          <h3 className="resolvedHeader">Nope! no request resolved.</h3>
         ) : (
           resolvedInfo?.map((info) => {
             return (
